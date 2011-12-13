@@ -1,0 +1,13 @@
+# Kirby extensions
+
+## What the fuck is Kirby?
+
+Kirby is a file-based cms. Easy to setup, easy to use, flexible like shit. You can find more about it here: <http://getkirby.com>
+
+## What are Kirby extensions
+
+This is a repository of snippets, plugins, templates, predefined site structures, etc. for Kirby. Anyone is invited to add their own or help me improve mine. 
+
+## Some simple rules for your own extensions
+
+Pleas put all the files for your snippets or templates or whatever in a folder and add a simple markdown file with some explanations about that piece of code and how to use it. Just download one of mine and use that as a template if you want. 

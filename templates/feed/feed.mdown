@@ -1,0 +1,5 @@
+# Feed Template 1.0
+
+## What is it?
+
+This is used in connection with the feed snippet to setup a RSS-Feed for any part of your site
