@@ -4,6 +4,10 @@
 
 A very simple snippet to help you setup RSS-Feeds for your site. 
 
+## Installation 
+
+Put the feed.php file in your site/snippets folder
+
 ## How to use it?
 
     <?php 
@@ -53,3 +57,6 @@ If you want to show a description for each item in your feed, make sure to speci
 
 This is maximum number of characters the description will have. An excerpt is automatically generated.
 
+## Author
+Bastian Allgeier
+<http://getkirby.com>

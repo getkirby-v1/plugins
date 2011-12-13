@@ -1,0 +1,36 @@
+# Treemenu Snippet 1.0
+
+## What is it?
+
+a very simple tree menu snippet, which renders a menu of all your site's pages and subpages
+
+## Installation 
+
+Put the treemenu.php file in your site/snippets folder
+
+## How to use it?
+
+    <?php snippet('treemenu') ?>
+
+## Customization
+
+Change the html in site/snippets/treemenu.php to get the best results for your project
+	    
+## Start with a sublevel
+
+If you don't want it to start from the first level
+give it a set of pages, where it should start. i.e.:
+
+	<? 
+  
+	// get the first set of subpages which should be used
+	$subpages = $pages->find('about-us')->children();
+  
+	// create the snippet beginning with those subpages
+	snippet('treemenu', array('subpages' => $subpages));
+  
+	?>
+
+## Author
+Bastian Allgeier
+<http://getkirby.com>
