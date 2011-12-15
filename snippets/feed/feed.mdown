@@ -1,4 +1,4 @@
-# Feed Snippet 1.0
+# Feed Snippet 1.1
 
 ## What is it?
 
@@ -49,6 +49,10 @@ If you want to specify a modified date, simply pass a timestamp here. Otherwise 
 
 Any set of pages
 
+### descriptionExcerpt
+
+Create an excerpt – which you can control with descriptionLength – or not. This is true by default.
+
 ### descriptionField
 
 If you want to show a description for each item in your feed, make sure to specify a field, which is available in any item and should be used for the description. For example every page of our blog has a text field, so we use that for the item description. 
@@ -60,3 +64,9 @@ This is maximum number of characters the description will have. An excerpt is au
 ## Author
 Bastian Allgeier
 <http://getkirby.com>
+
+## Changelog 
+
+### 1.1
+
+Added the descriptionExcerpt option and fixed some bugs. 
