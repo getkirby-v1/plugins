@@ -1,0 +1,35 @@
+# Disqus Snippet 1.0
+
+## What is it?
+
+A snippet which makes embedding Disqus comments very easy
+
+## Installation 
+
+Put the disqus.php file in your site/snippets folder
+
+## How to use it?
+
+    <?php snippet('disqus', array('disqus_shortname' => 'yourshortname')) ?>
+	    
+## Options
+
+### disqus_title 
+
+The title for your comment thread. This is the page title by default
+
+### disqus_developer
+
+Set this to true to enable developer mode
+
+### disqus_identifier
+
+By default this is the slug for the current page, which is unique. You can set any custom identifier if you want here though. 
+
+### disqus_url
+
+By default this is the current page url. 
+
+## Author
+Bastian Allgeier
+<http://getkirby.com>
