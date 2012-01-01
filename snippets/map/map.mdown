@@ -39,7 +39,7 @@ Set the width of your map in pixels without "px"
 
 Set the height of your map in pixels without "px"
 
-### Zoom
+### Zoom (default is 15)
 
 Set the zoom level for your map. Anything between 1 and 20 makes sense. 
 
