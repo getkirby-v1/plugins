@@ -65,17 +65,7 @@ class search {
     // the query will automatically be fetched from 
     // post or get requests
     if($this->searchfield) {
-      
-      // redirect requests to nice search urls
-      if(isset($_REQUEST[$this->searchfield])) {
-        $site->uri->params->{$this->searchfield} = urlencode(get($this->searchfield));
-        $url = $site->uri->toURL(false);
-        go($url);
-                    
-      }
-      
-      $this->query = trim(urldecode($site->uri->param($this->searchfield)));
-              
+      $this->query = trim(urldecode(get($this->searchfield)));
     }
       
     // stop here if no searchword is found  
@@ -162,7 +152,7 @@ class search {
     $pages = $pages->sortBy('searchScore','desc');
   
     // add pagination
-    if($this->paginate) $pages = $pages->paginate($this->paginate);
+    if($this->paginate) $pages = $pages->paginate($this->paginate, array('mode' => 'query'));
     
     $this->results = $pages;
   

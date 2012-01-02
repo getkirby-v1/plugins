@@ -1,0 +1,27 @@
+# Pagination Snippet 1.0
+
+## What is it?
+
+Adds full-flavoured pagination to your site
+
+## Installation 
+
+Put the pagination.php file in your site/snippets folder
+
+## How to use it?
+
+	<?php $articles = $pages->find('blog')->children()->paginate(10) ?>
+
+    <?php snippet('pagination', array('pagination' => $articles->pagination())) ?>
+
+… or with additional ranged pagination …
+
+    <?php snippet('pagination', array('pagination' => $articles->pagination(), 'range' => 5)) ?>
+	    
+## Customization
+
+Change the html in site/snippets/pagination.php
+
+## Author
+Bastian Allgeier
+<http://getkirby.com>
