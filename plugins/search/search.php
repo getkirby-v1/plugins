@@ -84,8 +84,8 @@ class search {
     $countSearchwords = count($this->searchwords);
     
     // define the set of pages to search in
-    $pages = ($this->in) ? $site->pages()->find($in)->children()->index() : $site->pages()->index();
-                        
+    $pages = ($this->in) ? $site->pages()->find($this->in)->children()->index() : $site->pages()->index();                        
+    
     foreach($pages as $page) {
           
       if(in_array($page->uri(), $this->ignore)) continue;
