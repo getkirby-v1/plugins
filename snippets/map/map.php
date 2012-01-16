@@ -25,6 +25,7 @@ var kmap = {
     
     var elem = document.createElement('div');
     elem.setAttribute('id', options.element);
+    elem.setAttribute('class', options.class);
     elem.style.width  = options.width + 'px';
     elem.style.height = options.height + 'px';
 
@@ -75,9 +76,10 @@ kmap.load({
   element : '<?php echo $id ?>',
   type    : '<?php echo $type ?>',
   width   : '<?php echo $width ?>',
-  height  : '<?php echo $height ?>'
+  height  : '<?php echo $height ?>',
+  class   : '<?php echo $class ?>'  
 });
 </script>
-<noscript id="<?php echo $id ?>">
-  <img src="http://maps.google.com/maps/api/staticmap?center=<?php echo urlencode($address) ?>&zoom=<?php echo $zoom ?>&size=<?php echo $width ?>x<?php echo $height ?>&maptype=<?php echo str::lower($type) ?>&markers=color:red|color:red|<?php echo urlencode($address) ?>&sensor=false" width="<?php echo $width ?>" width="<?php echo $height ?>" alt="<?php echo html($address) ?>" />
+<noscript id="<?php echo $id ?>" class="<?php echo $class ?>">
+  <img src="http://maps.google.com/maps/api/staticmap?center=<?php echo urlencode($address) ?>&zoom=<?php echo $zoom ?>&size=<?php echo $width ?>x<?php echo $height ?>&maptype=<?php echo str::lower($type) ?>&markers=color:red|color:red|<?php echo urlencode($address) ?>&sensor=false" width="<?php echo $width ?>" height="<?php echo $height ?>" class="<?php echo $class ?>" alt="<?php echo html($address) ?>" />
 </noscript>
