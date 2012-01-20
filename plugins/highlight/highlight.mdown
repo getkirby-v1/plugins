@@ -1,0 +1,50 @@
+# Highlight Plugin 1.0 Alpha
+
+## What is it?
+
+It's a very alpha-style code highlighting plugin, which uses Geshi highlighting to create nice code snippets for php, html, js and css. Please use it at your own risk and read the instructions carefully to install it properly. 
+
+## Installation 
+
+Copy the highlight folder and highlight.php and add them to site/plugins. (Create the plugins folder if it is not there) Copy the css files from the styles folder and add them to the folder where all your css files for your site are located. Load the needed style files in your templates:
+
+Example:
+
+	<?php echo css('styles/php.css') ?>
+	<?php echo css('styles/html.css') ?>
+	<?php echo css('styles/js.css') ?>
+	<?php echo css('styles/css.css') ?>
+
+
+## How to use it?
+
+Whenever you want to add a highlighted code snippet to your content, do it like this: 
+
+```php
+
+some php code
+
+```
+
+```html
+
+some html code 
+
+```
+
+```js
+
+some javascript code
+
+```
+
+```css
+
+some css code
+
+```
+
+	    
+## Author
+Bastian Allgeier
+<http://getkirby.com>

@@ -1,0 +1,57 @@
+.php {
+  color: #004678;
+}
+
+/* keywords (echo, required, etc) */
+.php .kw1 {
+  color: #9d2760;
+}
+.php .kw2 {
+  color: #9d2760;
+}
+/* predefined functions */
+.php .kw3 {
+  color: #7c3ab0;
+}
+
+/* <?php, ?>, etc */
+.php .kw4 {
+  color: #e22013; 
+}
+
+/* = */
+.php .kw5 {
+  color: #000;
+}
+
+/* comments */
+.php .co1,
+.php .co2,
+.php .coMULTI {
+  color: #267e3d; 
+}
+
+/* brackets */
+.php .br0 {
+  color: #000;
+}
+
+/* strings */
+.php .st0 {
+  color: #f28630 !important;
+}
+
+/* numbers */
+.php .nu0 {
+  color: #063ff4;
+}
+
+/* functions */
+.php .me1 {
+  color: #004678;
+}
+
+/* variables */
+.php .re0 {
+  color: #926821;
+}

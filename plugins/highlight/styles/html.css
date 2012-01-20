@@ -1,0 +1,27 @@
+/* doctype */
+.html .sc0 {
+  color: #267e3d;   
+}
+/* keywords (echo, required, etc) */
+.html .kw1 {
+  color: #9d2760;
+}
+/* tags */
+.html .sc2,
+.html .kw2 {
+  color: #9d2e8d;
+}
+/* attribute names */
+.html .kw3 {
+  color: #ac571d;
+}
+/* attribute values */
+.html .st0 {
+  color: #2437ad;
+}
+/* comments */
+.html .co1,
+.html .co2,
+.html .coMULTI {
+  color: #267e3d; 
+}

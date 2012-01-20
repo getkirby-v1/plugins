@@ -1,0 +1,23 @@
+/* function names */
+.js .me1,
+.js .kw3 {
+  color: #004678;
+}
+
+/* predefined stuff (function, etc…) */
+.js .kw1,
+.js .kw2 {
+  color: #9d2760;
+}
+/* strings */
+.js .st0 {
+  color: #8b1a1f;
+}
+/* number */
+.js .nu0 {
+  color: #063ff4;
+}
+/* false | true */
+.js .kw4 {
+  color: #063ff4;
+}

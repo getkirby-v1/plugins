@@ -1,0 +1,38 @@
+/* attributes */
+.css .kw1 {
+  color: #9d275f;
+}
+/* string values */
+.css .st0,
+.css .re4 {
+  color: #8b1a1f;
+}
+
+/* hex colors */
+.css .re0,
+.css .re0 .nu0 {
+  color: #8b1a1f;
+}
+
+/* known values */
+.css .kw2 {
+  color: #ae561d;
+}
+
+/* numbers (px etc) */
+.css .nu0,
+.css .re3 {
+  color: #063ff4;
+}
+
+/* !important */
+.css .kw3 {
+  color: #ff221b;
+}
+
+/* comments */
+.css .co1,
+.css .co2,
+.css .coMULTI {
+  color: #267e3d; 
+}
