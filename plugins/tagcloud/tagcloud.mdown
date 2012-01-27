@@ -1,0 +1,71 @@
+# Tagcloud Plugin 1.0 Beta
+
+## What is it?
+
+The tagcloud plugin will fetch all tags (comma separated) from subpages and return them with additional information - like the number of subpages for a each tag. 
+
+## Installation 
+
+Put the tagcloud.php file in your site/plugins folder. 
+
+## How to use it?
+
+### Content files
+
+To add tags to your content files, put them in a comma separated list:
+
+	Title: Some Title
+	----
+	Text: Some Text
+	----
+	Tags: design, fun, photography
+	----
+
+In your template add i.e.:
+
+    <?php $tagcloud = tagcloud($pages->find('blog'), array('limit' => 20)) ?>
+	
+	<ul>
+	<?php foreach($tagcloud as $tag): ?>
+	  <li><a href="<?php echo $tag->url() ?>"><?php echo $tag->name() ?></a></li>
+	<?php endforeach ?>
+	</ul>	
+
+
+As first argument you pass the main page. All children of it will be searched to find all tags. So if you have a blog and you want to find all tags of blog articles you add pass the main blog page as first argument. 
+
+
+## Available options
+
+### limit
+
+The number of tags in your tagcloud. If not specified, all tags will be returned.
+
+### field
+
+The name of the Tags field in your content files. By default this is "tags"
+
+### children
+
+Which children of the given page should be searched? Possible values are "all", "visible", "invisible". Default is "visible"
+
+### baseurl
+
+The base URL, which will be used to build tag URLs. By default the URL of the given page. 
+
+### param
+
+The name of the param, which will be used for the URL. By default this is just "tag". So the default URL will be "http://yourdomain.com/given-page/tag:design" for example
+
+### sort
+
+The field to sort by. By default the tagcloud will be sorted by the number of results per tag, but you can also sort it by tag name for example. 
+
+### sortdir
+
+The sort direction. Can be "desc" or "asc". Default is "desc"
+
+	    
+## Author
+Bastian Allgeier
+<http://getkirby.com>
