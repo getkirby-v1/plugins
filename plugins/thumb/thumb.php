@@ -1,8 +1,8 @@
 <?php
 
-function thumb($obj, $options=array()) {
+function thumb($obj, $options=array(), $tag=true) {
   $thumb = new thumb($obj, $options);
-  return $thumb->tag();
+  return ($tag) ? $thumb->tag() : $thumb->url();
 }
 
 class thumb {
