@@ -1,0 +1,120 @@
+# Flickrbadge Plugin
+
+## What is it?
+
+It's a little plugin to display the latest public pictures from your Flickr account.
+
+## Installation 
+
+Copy the flickr.php file to your plugins folder.
+
+## How to use it?
+
+You can add it to your templates like this:
+
+    <?php 
+    
+    $pictures = flickrbadge(array(
+      'key'      => 'your-flickr-api-key',
+      'username' => 'your-flickr-username',
+      'limit'    => 4,
+      'format'   => 'medium'
+    ));
+        
+    ?>
+    <ul>
+      <?php foreach($pictures as $picture): ?>
+      <li>
+        <a href="<?php echo $picture->url() ?>"><img src="<?php echo $picture->src() ?>" /></a>
+        <h3><?php echo $picture->title() ?></h3>
+        <div class="date"><?php echo date('d.m.Y - H:i', $picture->taken()) ?></div>
+        <div class="views">Views: <?php echo $picture->views() ?></div>
+        <div class="comments">Comments: <?php echo $picture->comments() ?></div>
+        <div class="tags">Tags: <?php echo implode(',', $picture->tags()) ?></div>
+      </li>    
+      <?php endforeach ?>
+    </ul>
+
+
+## Available Options
+
+### key (required)
+
+Set your Flickr api key. You can get a Flickr API Key over here: <http://www.flickr.com/services/api/key.gne>
+
+### username (required)
+
+Set your Flickr username. 
+	    
+### limit (default: 10)
+
+Set the number of images you'd like to display in your badge
+
+### format (default: square)
+
+Set the image format for your badge. The following formats are available:
+
+- square
+- thumbnail
+- small
+- medium 
+- medium_640
+- large
+- original
+
+### cache (default: true)
+
+Disable or enable the cache. Caching the results is highly recommended. Otherwise the badge will be super slow. You must make sure that `site/cache` is writable (change permissions to 0755) You must also set c::set('cache', true); in site/config/config.php to enable the cache. 
+
+### refresh (default: two hours)
+
+Set the cache expiry in seconds. By default it will be set to two hours. After two hours the badge will try to fetch fresh data from the API. Photo and user information will be kept forever unless you delete the cache files manually. This will speed up the update process. 
+
+## Available variables for $picture objects
+
+When looping through the result array you can use the following variables:
+
+### $picture->url()
+
+The url to the Flickr picture page
+
+### $picture->src()
+
+The url of the image file
+
+### $picture->title()
+
+The title of the picture
+
+### $picture->description()
+
+The description for the picture
+
+### $picture->tags() 
+
+An array of tags
+
+### $picture->taken()
+
+The unix timestamp when the picture has been taken
+
+### $picture->posted()
+
+The unix timestamp when the picture has been posted on Flickr
+
+### $picture->lastupdate()
+
+The unix timestamp when the picture has been updated 
+
+### $picture->views()
+
+The number of views for this picture
+
+### $picture->comments()
+
+The number of comments for this picture
+
+
+## Author
+Bastian Allgeier
+<http://getkirby.com>
