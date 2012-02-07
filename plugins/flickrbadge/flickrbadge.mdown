@@ -6,7 +6,7 @@ It's a little plugin to display the latest public pictures from your Flickr acco
 
 ## Installation 
 
-Copy the flickr.php file to your plugins folder.
+Copy the flickrbadge.php file to your site/plugins folder.
 
 ## How to use it?
 
