@@ -119,6 +119,10 @@ The number of views for this picture
 The number of comments for this picture
 
 
+## Credits
+
+The plugin uses the awesome phpFlickr Class by Dan Coulter: http://phpflickr.com/ 
+
 ## Author
 Bastian Allgeier
 <http://getkirby.com>
