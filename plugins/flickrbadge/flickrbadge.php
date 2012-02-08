@@ -33,7 +33,7 @@ function flickrbadge($params=array()) {
     
   if(!empty($cache)) return $cache;
     
-  $flickr = new phpFlickr('45cd7efcbb55fdc18c74d3e9238c99ee');
+  $flickr = new phpFlickr($options['key']);
 
   $userCacheID = 'flickrbadge/user.' . md5($options['username']) . '.php';
   $userCache   = ($options['cache']) ? cache::get($userCacheID) : false;
