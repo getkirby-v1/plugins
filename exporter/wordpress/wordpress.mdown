@@ -10,3 +10,17 @@ MAKE A BACKUP OF YOUR CONTENT FOLDER TO BE SURE TO NOT LOOSE ANY DATA.
 
 Open http://yourkirbydomain.com/wordpress.php in your browser to start the exporter. 
 
+## Clean-Up
+
+Make sure to remove wordpress.php once you've finished exporting all your articles. 
+
+## The exporter does not…
+
+- …export images from Wordpress
+- …convert HTML in your Wordpress articles to Markdown
+- …export Wordpress pages or custom post types
+
+## Help needed!
+
+I could really need some help with improving the export so it will convert HTML to Markdown or at least clean the HTML. 
+
