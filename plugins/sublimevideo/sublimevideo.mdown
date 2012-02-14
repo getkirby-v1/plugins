@@ -25,7 +25,7 @@ This plugin is just a Kirbytext extension, in order to easily use the SublimeVid
 
 ## How to use it?
 
-SublimeVideo needs a poster, videos, width and height. **We consider that you name the poster and the videos with the same name.**
+SublimeVideo needs a poster, videos, width and height. **We consider that you name the poster and the videos with the same way.**
 
 Example : 
 
@@ -33,7 +33,7 @@ Example :
 - venice-trip.mp4
 - venice-trip.ogg
 
-When you want to include the video named "my-awesome-video" using SublimeVideo, just use the new `sublime` tag and mention that name.
+When you want to include the video named "venice-trip" using SublimeVideo, just use the new `sublime` tag and mention that name.
 
 ### Attributes
 
