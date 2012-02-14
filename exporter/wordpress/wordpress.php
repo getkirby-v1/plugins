@@ -10,7 +10,7 @@
  * it creates quite a lot of folders and text files
  * 
  * MAKE A BACKUP OF YOUR CONTENT FOLDER BEFORE YOU MOVE ON
- * JUST TO MAKE SURE YOU DON'T LOOSE ANY DATA
+ * JUST TO MAKE SURE YOU DON'T LOSE ANY DATA
  *
  * Installation:
  *  
