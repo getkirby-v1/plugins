@@ -38,7 +38,7 @@ $username = 'admin';
 // Your Wordpress password
 $password = 'yourpassword';
 
-// setup the name for your content files
+// setup the desired name for your content files
 $template = 'article.txt';
 
 // setup the date format, which will 

@@ -6,7 +6,7 @@ This exporter will grab all articles from your Wordpress blog and export them to
 
 Download wordpress.php and put it in the main directory of your Kirby site. Open wordpress.php in your favorite editor and setup the url to your blog and your wordpress username and password. You should also make sure that $root is setup to the folder where all the exported articles should be stored and that this folder is writable. (change permissions to 0755)
 
-MAKE A BACKUP OF YOUR CONTENT FOLDER TO BE SURE TO NOT LOOSE ANY DATA.
+MAKE A BACKUP OF YOUR CONTENT FOLDER TO BE SURE TO NOT LOSE ANY DATA.
 
 Open http://yourkirbydomain.com/wordpress.php in your browser to start the exporter. 
 
