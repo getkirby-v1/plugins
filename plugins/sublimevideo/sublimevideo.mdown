@@ -1,0 +1,49 @@
+# SublimeVideo
+
+## About
+
+- Version: 1
+- Date: 14.02.2012
+- Author: Thibaut Ninove ([WooConcept](http://wooconcept.com)), with the help of Bastian Allgeier
+- Support: provided as is, no support provided
+	
+## What is it?
+
+This plugin is just a Kirbytext extension, in order to easily use the SublimeVideo HTML player. It provides you with a new tag:
+
+	(sublime: file-name video1: ext1 video2: ext2 poster: jpg width: xxx height: yyy)
+
+## Installation
+
+1. Copy the `sublimevideo.php` file into your `site/plugins` folder. If the plugins folder doesn't exist yet, please create it. As a plugin, the file will be automatically loaded by Kirby.
+
+2. Put your SublimeVideo script/token in the header  of your site (or in the footer just before the closing `</body>`). It should look like this :
+
+	<script type="text/javascript" src="http://cdn.sublimevideo.net/js/YOUR_TOKEN.js"></script>
+
+> Please note that you need to have a SublimeVideo account (free). This service is very easy to use but if you need help, please refer to their documentation. I am also not going to discuss video encoding here.
+
+## How to use it?
+
+SublimeVideo needs a poster, videos, width and height. **We consider that you name the poster and the videos with the same way.**
+
+Example : 
+
+- venice-trip.jpg
+- venice-trip.mp4
+- venice-trip.ogg
+
+When you want to include the video named "venice-trip" using SublimeVideo, just use the new `sublime` tag and mention that name along with the other attributes below.
+
+### Attributes
+
+- `sublime`: the files common name
+- `video1`: the first video extension (usually "mp4")
+- `video2`: the second video extension (usually "ogg")
+- `poster`: the poster image extension (usually "jpg")
+- `width`
+- `height`
+
+### Example
+
+	(sublime: venice-trip video1: mp4 video2: ogg poster: jpg width: 540 height: 304)
