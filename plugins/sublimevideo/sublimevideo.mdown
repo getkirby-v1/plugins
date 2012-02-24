@@ -9,19 +9,21 @@
 	
 ## What is it?
 
-This plugin is just a Kirbytext extension, in order to easily use the SublimeVideo HTML player. It provides you with a new tag:
+This plugin is just a Kirbytext extension, in order to easily use the [SublimeVideo HTML5 Player](http://sublimevideo.net/). It provides you with a new tag:
 
-	(sublime: file-name video1: ext1 video2: ext2 poster: jpg width: xxx height: yyy)
+`(sublime: file-name video1: ext1 video2: ext2 poster: jpg width: xxx height: yyy)`
 
 ## Installation
 
 1. Copy the `sublimevideo.php` file into your `site/plugins` folder. If the plugins folder doesn't exist yet, please create it. As a plugin, the file will be automatically loaded by Kirby.
 
-2. Put your SublimeVideo script/token in the header  of your site (or in the footer just before the closing `</body>`). It should look like this :
+2. Put your SublimeVideo embed code inside the `<head>` tag of your site. It should look like this :
 
-	<script type="text/javascript" src="http://cdn.sublimevideo.net/js/YOUR_TOKEN.js"></script>
+```html
+<script type="text/javascript" src="http://cdn.sublimevideo.net/js/YOUR_TOKEN.js"></script>
+```
 
-> Please note that you need to have a SublimeVideo account (free). This service is very easy to use but if you need help, please refer to their documentation. I am also not going to discuss video encoding here.
+Please note that you need to have a [SublimeVideo account](http://sublimevideo.net/plans) (free). This service is very easy to use but if you need help, please refer to [their documentation](http://docs.sublimevideo.net/quickstart-guide). I am also not going to discuss [video encoding](http://docs.sublimevideo.net/encode-videos-for-the-web) here.
 
 ## How to use it?
 
