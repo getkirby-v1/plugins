@@ -61,3 +61,17 @@ If you add an additional image file with the same naming convention (i.e. `myvid
 ### Full Example
 
 	(sublime: myvideo width: 540 height: 304 name: My awesome video uid: myvideo class: myvideo)
+
+## Shortcut
+
+If you need to embed SublimeVideos directly in your template or snippet files you can use the available shortcut function:
+
+```php
+
+<?php echo sublime('myvideo', 300, 400) ?>
+
+```
+
+
+
+

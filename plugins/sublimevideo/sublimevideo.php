@@ -5,6 +5,23 @@
 // Author: Thibaut Ninove <http://wooconcept.com>, with the help of Bastian Allgeier <http://getkirby.com>
 // Support: provided as is, no support provided
 
+
+// shortcut function to add sublime videos to templates and snippets as well.
+function sublime($id, $width=false, $height=false, $uid=false, $name=false, $class=false) {
+  $name = kirbytext::classname();
+  $obj  = new $name;
+  return $obj->sublime(array(
+    'sublime'  => $id,
+    'width'    => $width,
+    'height'   => $height,
+    'uid'      => $uid,
+    'name'     => $name,
+    'class'    => $class
+  ));
+}
+
+
+// kirbytext extension
 class kirbytextExtended extends kirbytext {
 
   function __construct($text, $markdown=true) {
@@ -54,8 +71,6 @@ class kirbytextExtended extends kirbytext {
     $defaults = array(
       'uid'    => $id,
       'name'   => $id,
-      'width'  => c::get('kirbytext.video.width'),
-      'height' => c::get('kirbytext.video.height')
     );
     
     $options = array_merge($defaults, $params);
@@ -63,6 +78,9 @@ class kirbytextExtended extends kirbytext {
     $height  = html($options['height']);
     $uid     = html($options['uid']);
     $name    = html($options['name']);
+
+    if(!$width)  $width  = c::get('kirbytext.video.width');
+    if(!$height) $height = c::get('kirbytext.video.height');
     
     // create an additional css class if specified
     if(!empty($class)) $class = ' ' . html($class);
