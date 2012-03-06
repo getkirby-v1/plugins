@@ -90,7 +90,7 @@ class kirbytextExtended extends kirbytext {
       // check for hd quality 
       $hd = ($video->hd()) ? ' data-quality="hd"' : '';
       // generate the source tag for each video
-      $html .= '<source src="' . $video->url() . '"' . $hd . '>';
+      $html .= '<source src="' . $video->url() . '"' . $hd . ' />';
     }
     $html .= '</video>';
         
