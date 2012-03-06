@@ -2,16 +2,16 @@
 
 ## About
 
-- Version: 1
-- Date: 14.02.2012
-- Author: Thibaut Ninove ([WooConcept](http://wooconcept.com)), with the help of Bastian Allgeier
+- Version: 1.1
+- Date: 06.03.2012
+- Author: Thibaut Ninove ([WooConcept](http://wooconcept.com)), with the help of Bastian Allgeier <http://getkirby.com>
 - Support: provided as is, no support provided
 	
 ## What is it?
 
-This plugin is just a Kirbytext extension, in order to easily use the [SublimeVideo HTML5 Player](http://sublimevideo.net/). It provides you with a new tag:
+This plugin is a Kirbytext extension, in order to easily use the [SublimeVideo HTML5 Player](http://sublimevideo.net/). It provides you with a new tag:
 
-`(sublime: file-name video1: ext1 video2: ext2 poster: jpg width: xxx height: yyy)`
+	(sublime: video-name width: xxx height: yyy)
 
 ## Installation
 
@@ -27,25 +27,37 @@ Please note that you need to have a [SublimeVideo account](http://sublimevideo.n
 
 ## How to use it?
 
-SublimeVideo needs a poster, videos, width and height. **We consider that you name the poster and the videos with the same way.**
+This tag will load all video files and an image poster file from the current page folder, which match the video-name value. Here's a list of example files:
 
-Example : 
+- myvideo.hd.mp4
+- myvideo.hd.ogv
+- myvideo.hd.webm
+- myvideo.mobile.mp4
+- myvideo.mobile.ogv
+- myvideo.mobile.webm
+- myvideo.poster.png
+- myvideo.standard.mp4
+- myvideo.standard.ogv
 
-- venice-trip.jpg
-- venice-trip.mp4
-- venice-trip.ogg
+Use the tag…
 
-When you want to include the video named "venice-trip" using SublimeVideo, just use the new `sublime` tag and mention that name along with the other attributes below.
+	(sublime: myvideo width: 400 height: 300)
+
+…in your text to automatically load the SublimeVideo with all matching files. 
+
+Adding `.hd` and `.standard` to files with the same extension will mark files as HD and low-res video files and will enable [SublimeVideo HD switching](http://docs.sublimevideo.net/hd-switching) You can also add the `.mobile` prefix to specify a file, which will be used on mobile devices. 
+
+If you add an additional image file with the same naming convention (i.e. `myvideo.poster.png`) this file will be used as a preview as long as the video has not been loaded yet and if video playback is not available. 
 
 ### Attributes
 
 - `sublime`: the files common name
-- `video1`: the first video extension (usually "mp4")
-- `video2`: the second video extension (usually "ogg")
-- `poster`: the poster image extension (usually "jpg")
-- `width`
-- `height`
+- `width`: the width of the video 
+- `height`: the height of the video
+- `uid`: a unique id (optional), which will appear in the [SublimeVideo stats](http://docs.sublimevideo.net/optimize-for-stats)
+- `name`: the name of the video (optional), which will appear in the [SublimeVideo stats](http://docs.sublimevideo.net/optimize-for-stats)
+- `class`: an additional class name, which will be added to the video tag. SublimeVideo tags already have a sublime class by default, but you can use this optionally to add another class. 
 
-### Example
+### Full Example
 
-	(sublime: venice-trip video1: mp4 video2: ogg poster: jpg width: 540 height: 304)
+	(sublime: myvideo width: 540 height: 304 name: My awesome video uid: myvideo class: myvideo)
