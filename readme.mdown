@@ -1,8 +1,8 @@
 # Kirby extensions
 
-## What the fuck is Kirby?
+## What is Kirby?
 
-Kirby is a file-based cms. Easy to setup, easy to use, flexible like shit. You can find more about it here: <http://getkirby.com>
+Kirby is a file-based cms. Easy to setup, easy to use, flexible as hell. You can find more about it here: <http://getkirby.com>
 
 ## What are Kirby extensions
 
