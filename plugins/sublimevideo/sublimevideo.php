@@ -85,7 +85,10 @@ class kirbytextExtended extends kirbytext {
     // create an additional css class if specified
     if(!empty($class)) $class = ' ' . html($class);
     
-    $html = '<video class="sublime' . $class . '" poster="' . $poster->url() . '" width="' . $width . '" height="' . $height . '" data-uid="' . $uid . '" data-name="' . $name . '" preload="none">'; 
+    // check for a poster
+    $poster = ($poster) ? ' poster="' . $poster->url() . '"' : false;
+    
+    $html = '<video class="sublime' . $class . '"' . $poster . ' width="' . $width . '" height="' . $height . '" data-uid="' . $uid . '" data-name="' . $name . '" preload="none">'; 
     foreach($videos as $video) {
       // check for hd quality 
       $hd = ($video->hd()) ? ' data-quality="hd"' : '';
