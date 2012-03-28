@@ -37,7 +37,7 @@ class kirbytextExtended extends kirbytext {
   
     global $site;
     
-    $page   = $site->pages()->active();                
+    $page   = $this->obj;                
     $id     = @$params['sublime'];
     $class  = @$params['class'];
     $videos = array();
