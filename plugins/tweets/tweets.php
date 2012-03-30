@@ -77,6 +77,17 @@ class tweet extends obj {
   function date($format=false) {
     return ($format) ? date($format, $this->date) : $this->date;  
   }
+
+  function text($link=false) {
+    return ($link) ? self::link(html($this->text)) : $this->text;      
+  }
+
+  static function link($text) {
+    $text = preg_replace('/(http|https):\/\/([a-z0-9_\.\-\+\&\!\#\~\/\,]+)/i', '<a href="$1://$2">$1://$2</a>', $text);
+    $text = preg_replace('/@([A-Za-z0-9_]+)/is', '<a href="https://twitter.com/#!/$1">@$1</a>', $text);
+    $text = preg_replace('/#([A-Aa-z0-9_-]+)/is', '<a href="https://twitter.com/#!/search/%23$1">#$1</a>', $text);
+    return $text; 
+  }
   
 }
 
