@@ -1,0 +1,151 @@
+# Email Plugin
+
+## What is it?
+
+It's a simple email sender plugin. You can use it everywhere in your code to send emails via PHP's mail(), [Amazon Simple Email Service](http://aws.amazon.com/ses/) or [Postmark](http://postmarkapp.com/)
+
+## Installation 
+
+Copy the email.php file to your site/plugins folder.
+
+### Amazon SES configuration
+
+Go to your site/config/config.php and add the following rules: 
+
+		c::set('email.use', 'amazon');
+		c::set('email.amazon.key', 'Your Amazon SES Key');
+		c::set('email.amazon.secret', 'Your Amazon SES Secret');
+
+### Postmark configuration
+
+Go to your site/config/config.php and add the following rules: 
+
+		c::set('email.use', 'postmark');
+		c::set('email.postmark.key', 'Your Postmark API Key');
+
+## How to use it?
+
+You can use it in your templates, snippets or plugins like this:
+
+    <?php 
+    
+    $send = email(array(
+      'to'      => 'John Doe <john@doe.com>',
+      'from'    => 'Max Musterman <max@musterman.com>',
+      'subject' => 'My first Email',
+      'body'    => 'Hello my friend! How are things going?'
+    ));
+    
+    ?>
+
+### React on sending errors
+
+    <?php 
+    
+    $send = email(array(
+      'to'      => 'John Doe <john@doe.com>',
+      'from'    => 'Max Musterman <max@musterman.com>',
+      'subject' => 'My first Email',
+      'body'    => 'Hello my friend! How are things going?'
+    ));
+	
+	if(error($send)) {
+
+      // show the response
+      a::show($send);
+
+	  // or do something else like saying that the email failed
+      echo "The email could not be sent";
+    
+    }
+    
+    ?>
+
+## Available Params
+
+This is the full list of params you can pass to the email function:
+
+### to
+
+The address the email will be sent to. You can use either just the address…
+	
+	'to' => 'john@doe.com'
+
+…or the address together with a name…
+
+	'to' => 'John Doe <john@doe.com>'
+
+If you are always sending to the same address, you can setup the to address in your config like this:
+
+	c::set('email.to', 'John Doe <john@doe.com>');
+
+Afterwards you don't need to pass the to address when calling the email function. 
+
+### from
+
+The address from which the mail has been sent. Please make sure to use an address which you are allowed to use to avoid spam. The following formats are allowed
+
+	'from' => 'john@doe.com'
+
+	'from' => 'John Doe <john@doe.com>'
+
+If you are always sending from the same address, you can setup the from address in your config like this:
+
+	c::set('email.from', 'John Doe <john@doe.com>');
+
+Afterwards you don't need to pass the to address when calling the email function. 
+
+### replyto
+
+The reply address. The from address will be used if you don't pass this. The following formats are allowed
+
+	'from' => 'john@doe.com'
+
+	'from' => 'John Doe <john@doe.com>'
+
+If you are always using the same reply address, you can setup the address in your config like this:
+
+	c::set('email.replyto', 'John Doe <john@doe.com>');
+
+Afterwards you don't need to pass the to address when calling the email function. 
+
+### subject
+
+The subject line for your email. If you are always using the same subject you can setup a default subject in your config:
+
+	c::set('email.subject', 'This is my default subject');
+
+### body
+
+The plain text for your email. The email plugin does not support sending HTML emails. 
+
+### use
+
+If you want to switch the transport service, you can do it like this:
+
+	'use' => 'mail'
+
+	'use' => 'amazon'
+
+	'use' => 'postmark'
+
+### postmark.key
+
+If you want to send from a different postmark api key, you can pass the key in the params, when calling the email function. 
+
+### postmark.test
+
+You can pass `postmark.test => true` when calling the email function to make a test call instead of sending a real request to the postmark api. Unfortunately this is not supported by the Amazon API as well. 
+
+### amazon.key
+
+If you want to send from a different amazon api key, you can pass the key in the params, when calling the email function. 
+
+### amazon.secret
+
+If you want to send from a different amazon api secret, you can pass the key in the params, when calling the email function. 
+
+
+## Author
+Bastian Allgeier
+<http://getkirby.com>
