@@ -1,16 +1,5 @@
 <?php
 
-require('kirby.php');
-
-$send = email(array(
-  'to'      => 'Bastian Allgeier <bastian@getkirby.com>',
-  'from'    => 'Bastian Allgeier <bastian.allgeier@gmail.com>',
-  'subject' => 'My first Email',
-  'body'    => 'Hello my friend! How are things going?'
-));
-
-a::show($send);
-
 /*
  * Simple Email Plugin for Kirby
  * 
