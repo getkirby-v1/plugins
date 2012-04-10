@@ -1,0 +1,66 @@
+# Estimated reading time plugin
+
+This is a plugin for [Kirby](http://getkirby.com/) that estimates the reading time for your content.
+
+## Installation
+
+Put the `readingtime.php` file in your `site/plugins` folder.
+
+## How to use it
+
+It's very simple! Just put `<?php echo readingtime($page->text()) ?>` in your template and it will echo the estimated reading time. You can pass any other page variable to estimate the reading time of it. 
+
+## Example usage
+
+	<?php snippet('header') ?>
+    <?php snippet('menu') ?>
+    <?php snippet('submenu') ?>
+
+    <section class="content">
+
+        <article>
+            <h1><?php echo html($page->title()) ?></h1>
+            <?php echo readingtime($page->text()) ?>
+            <?php echo kirbytext($page->text()) ?>
+        </article>
+
+    </section>
+
+    <?php snippet('footer') ?>
+
+## Language
+
+The plugin is very easy to localize. The default format for example is 3 minutes, 31 seconds. Pass the following params to translate it to any language: 
+
+	<?php 
+	
+	echo readingtime($page->text(), array(
+		'minute'  => 'Minute',
+		'minutes' => 'Minuten',
+		'second'  => 'Sekunde',
+		'seconds' => 'Sekunden'
+	)); 
+
+	?>
+
+You can even change the entire format of the result: 
+
+	<?php 
+	
+	echo readingtime($page->text(), array(
+		'minute'  => 'Minute',
+		'minutes' => 'Minuten',
+		'second'  => 'Sekunde',
+		'seconds' => 'Sekunden',
+		'format'  => '{minutesCount} {minutesLabel} – {secondsCount} {secondsLabel}
+	)); 
+
+	?>
+
+## Author
+
+Author: Roy Pipeloi <http://roypipeloi.nl/>
+Contributor: Bastian Allgeier <http://getkirby.com>
+
+Original Version: https://github.com/Roylodder/Kirbycms-Reading-Time-Snippet
+
