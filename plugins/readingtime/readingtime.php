@@ -10,7 +10,7 @@
  * 
  * <?php echo readingtime($page->text()) ?>
  * 
- * Author: Roy Pipeloi <http://roypipeloi.nl/>
+ * Author: Roy Lodder <http://roylodder.com>
  * Contributor: Bastian Allgeier <http://getkirby.com>
  *
  */

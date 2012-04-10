@@ -59,7 +59,7 @@ You can even change the entire format of the result:
 
 ## Author
 
-Author: Roy Pipeloi <http://roypipeloi.nl/>   
+Author: Roy Lodder <http://roylodder.com>   
 Contributor: Bastian Allgeier <http://getkirby.com>
 
 Original Version: https://github.com/Roylodder/Kirbycms-Reading-Time-Snippet
