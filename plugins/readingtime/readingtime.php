@@ -26,10 +26,10 @@ function readingtime($content, $params=array()) {
   );
   
   $options = array_merge($defaults, $params);
-	$words	 = str_word_count(strip_tags($content));
+  $words   = str_word_count(strip_tags($content));
 
-	$minutesCount = floor($words / 200);
-	$secondsCount = floor($words % 200 / (200 / 60));
+  $minutesCount = floor($words / 200);
+  $secondsCount = floor($words % 200 / (200 / 60));
   $minutesLabel = ($minutesCount == 1) ? $options['minute'] : $options['minutes'];
   $secondsLabel = ($secondsCount == 1) ? $options['second'] : $options['seconds'];
 
