@@ -10,6 +10,10 @@ function readlater($content, $tool, $label=false, $params=array()) {
     'pocket' => array(
       'link'  => 'https://getpocket.com/save?url={url}&title={title}',
       'label' => 'Save to Pocket',
+    ),
+    'readability' => array(
+      'link'  => 'http://www.readability.com/save?url={url}',
+      'label' => 'Add to Readability',
     )
   );
 
