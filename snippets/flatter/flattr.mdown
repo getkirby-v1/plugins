@@ -1,0 +1,83 @@
+# Flattr Snippet 1.0
+
+## What is it?
+
+This snippet will embed a Flattr button in your site. You can set several options to customize it. The options are nearly equal to the original Flattr parameters. It even has a fallback if javascript is disabled and an optional HTML5 output.
+
+## Installation 
+
+Put the flattr.php file in your site/snippets folder
+
+## How to use it?
+
+    <?php snippet('flattr', array('user_id' => 'your_user_id')) ?>
+  
+…or with more options…
+
+    <?php 
+
+  snippet('flattr', array(
+    'user_id'     => 'your_user_id',
+    'url'         => 'http://custom.url/path/to/page',
+    'title'       => 'Your Page Headline',
+    'description' => 'Your Description',
+    'category'    => 'One of the Flattr Categories',
+    'language'    => 'en_GB',
+    'tags'        => 'different, tags',
+    'button'      => 'compact',
+    'popout'      => '0',
+    'html5'       => '1'
+  ));
+
+  ?>
+      
+## Options
+
+### user_id (required)
+
+A Flattr username. This is a required parameter for autosubmit but not for things that are already on flattr.com.
+
+### url (optional)
+
+Each thing on Flattr requires a unique URL. All parts of the URL, including the both the parameters and fragments, are used to distinguish the difference between submitted URLs. If this parameter is unset, the snippet grabs the *$page->url()* string.
+
+### title (optional)
+
+Will be used to describe your thing on Fattr. The *title* should be between 5-100 characters. All HTML is stripped. If this parameter is unset, the snippet grabs the *$page->title()* string.
+
+### description (optional)
+
+Will be used to describe your thing. The *description* should be between 5-1000 characters. All HTML is stripped except the *<br\>* character which will be converted into newlines *(\n)*. 
+
+### category (optional)
+
+This parameter is used to sort things on Flattr and has no impact on the functionality of your button. It's value must be one of the [available categories](https://api.flattr.com/rest/v2/categories.txt).
+
+### language (optional) 
+
+Specifies which language your thing is in. Specifying the language will allow visitors on Flattr to filter through the large amount of things and get a personalized feed of items in their selected languages. The value must be a language code from the [available languages](https://api.flattr.com/rest/v2/languages.txt). Note that even tho this parameter is optional, a language will be guessed and added automatically if it is omitted. 
+
+### tags (optional)
+
+This parameter allows you to add tags that can be used to describe your thing. This is used on Flattr to allow further filtering and sorting of things. Multiple tags are seperated by a comma *,*. Using non alpha characters in tags are not supported nor is using a comma for obvious reasons.
+
+### button (optional)
+
+We also provide a compact version of our Flattr button. This parameter tells the embedded button script which button layout to use. Set this parameter to *compact* if you want the *compact* button. Don't set the parameter at all if you are fine with the normal button.
+
+### popout (optional)
+
+Set this parameter to *0* to disable the popout that appears when hovering the mouse cursor over the button.
+
+### hidden (optional)
+
+Not all content is suitable for public listing. If you for one reason or another don't want your content to be listed on Flattr set this parameter to *1*.
+
+### html5 (optional)
+
+You can get the output in valid html5 if you set this parameter to *1*.
+
+Further information can be found on the Flattr developer page: <http://developers.flattr.net/button/>
+
+# Author
+André Dujardin <http://djdn.de/>
