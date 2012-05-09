@@ -47,5 +47,3 @@ function readlater($content, $tool, $label=false, $params=array()) {
   return '<a' . $class . $rel . $target . ' href="' . $link . '">' . $label . '</a>';
 
 }
-
-?>

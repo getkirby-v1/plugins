@@ -49,5 +49,3 @@ function readingtime($content, $params=array()) {
   return $result;
 
 }
-
-?>

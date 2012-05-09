@@ -90,5 +90,3 @@ class tweet extends obj {
   }
   
 }
-
-?>

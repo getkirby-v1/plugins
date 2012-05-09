@@ -102,5 +102,3 @@ class kirbytextExtended extends kirbytext {
   }
 
 }
-
-?>

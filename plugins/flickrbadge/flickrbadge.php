@@ -1909,5 +1909,3 @@ if ( !class_exists('phpFlickr_pager') ) {
 		
 	}
 }
-
-?>

@@ -62,5 +62,3 @@ function tagcloud($parent, $options=array()) {
   return $cloud;  
 
 }
-
-?>

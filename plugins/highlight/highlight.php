@@ -43,5 +43,3 @@ function smartHighlight($code) {
   return $code;
 
 }
-
-?>
