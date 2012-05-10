@@ -10,7 +10,7 @@ Put the filelist.php file in your site/snippets folder
 
 ## How to use it?
 
-    <?php filelist('gallery') ?>
+    <?php snippet('filelist'); ?>
 	 
 ## Options
 
