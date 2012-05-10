@@ -15,7 +15,7 @@ $files = $files->sortBy($sort, $direction);
 
 ?>
 <ul class="filelist">
-  <?php foreach($page->files() as $file): ?>
+  <?php foreach($files as $file): ?>
   <li><a href="<?php echo $file->url() ?>"><?php echo html($file->filename()) ?></a></li>    
   <?php endforeach ?>
 </ul>
