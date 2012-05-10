@@ -10,11 +10,14 @@ Put the flattr.php file in your site/snippets folder
 
 ## How to use it?
 
-    <?php snippet('flattr', array('user_id' => 'your_user_id')) ?>
-  
+```php
+<?php snippet('flattr', array('user_id' => 'your_user_id')) ?>
+```
+
 …or with more options…
 
-    <?php 
+```php
+<?php 
 
   snippet('flattr', array(
     'user_id'     => 'your_user_id',
@@ -29,7 +32,8 @@ Put the flattr.php file in your site/snippets folder
     'html5'       => '1'
   ));
 
-  ?>
+?>
+```
       
 ## Options
 
