@@ -18,7 +18,7 @@ Put the map.php file in your site/snippets folder
 
 	snippet('map', array(
 		'address' => 'Mannheim, Germany',
-		'zoom'    => 17',
+		'zoom'    => 17,
 		'width'   => 300,
 		'height'  => 200
 	));
