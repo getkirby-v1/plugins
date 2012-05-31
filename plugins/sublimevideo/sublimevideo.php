@@ -1,21 +1,21 @@
 <?php 
 
-// Version: 1.1
-// Date: 06.03.2012
+// Version: 1.2
+// Date: 31.05.2012
 // Author: Thibaut Ninove <http://wooconcept.com>, with the help of Bastian Allgeier <http://getkirby.com>
 // Support: provided as is, no support provided
 
 
 // shortcut function to add sublime videos to templates and snippets as well.
 function sublime($id, $width=false, $height=false, $uid=false, $name=false, $class=false) {
-  $name = kirbytext::classname();
-  $obj  = new $name;
+  $kirbytext = kirbytext::classname();
+  $obj  = new $kirbytext();
   return $obj->sublime(array(
     'sublime'  => $id,
     'width'    => $width,
     'height'   => $height,
-    'uid'      => $uid,
-    'name'     => $name,
+    'uid'      => ($uid)  ? $uid  : $id,
+    'name'     => ($name) ? $name : $id,
     'class'    => $class
   ));
 }
@@ -24,7 +24,7 @@ function sublime($id, $width=false, $height=false, $uid=false, $name=false, $cla
 // kirbytext extension
 class kirbytextExtended extends kirbytext {
 
-  function __construct($text, $markdown=true) {
+  function __construct($text=false, $markdown=true) {
   
     parent::__construct($text, $markdown);
     
@@ -37,7 +37,7 @@ class kirbytextExtended extends kirbytext {
   
     global $site;
     
-    $page   = $this->obj;                
+    $page   = ($this->obj) ? $this->obj : $site->pages()->active();                
     $id     = @$params['sublime'];
     $class  = @$params['class'];
     $videos = array();
@@ -69,6 +69,8 @@ class kirbytextExtended extends kirbytext {
     }
         
     $defaults = array(
+      'width'  => 400,
+      'height' => 300,
       'uid'    => $id,
       'name'   => $id,
     );
