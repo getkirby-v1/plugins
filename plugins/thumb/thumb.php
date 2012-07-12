@@ -223,10 +223,16 @@ class thumb {
       
       // create a temporary resized version of the image first
       $thumb = imagecreatetruecolor($this->tmpWidth, $this->tmpHeight); 
+      imagesavealpha($thumb, true);
+      $color = imagecolorallocatealpha($thumb, 0, 0, 0, 127);
+      imagefill($thumb, 0, 0, $color);
       imagecopyresampled($thumb, $image, 0, 0, 0, 0, $this->tmpWidth, $this->tmpHeight, $this->sourceWidth, $this->sourceHeight); 
       
       // crop that image afterwards      
       $cropped = imagecreatetruecolor($this->width, $this->height); 
+      imagesavealpha($cropped, true);
+      $color   = imagecolorallocatealpha($cropped, 0, 0, 0, 127);
+      imagefill($cropped, 0, 0, $color);
       imagecopyresampled($cropped, $thumb, 0, 0, $startX, $startY, $this->tmpWidth, $this->tmpHeight, $this->tmpWidth, $this->tmpHeight); 
       imagedestroy($thumb);
       
@@ -235,6 +241,9 @@ class thumb {
 
     } else {
       $thumb = imagecreatetruecolor($this->width, $this->height); 
+      imagesavealpha($thumb, true);
+      $color = imagecolorallocatealpha($thumb, 0, 0, 0, 127);
+      imagefill($thumb, 0, 0, $color);
       imagecopyresampled($thumb, $image, 0, 0, 0, 0, $this->width, $this->height, $this->sourceWidth, $this->sourceHeight); 
     }    
     
@@ -252,5 +261,5 @@ class thumb {
     );
     
   }
-  
+    
 }
