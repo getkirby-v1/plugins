@@ -3,16 +3,19 @@
 // set the defaults
 if(!isset($disqus_shortname))  die('Please pass the disqus shortname');
 if(!isset($disqus_title))      $disqus_title = $page->title();
-if(!isset($disqus_developer))  $disqus_developer = 0;
+if(!isset($disqus_developer))  $disqus_developer = false;
 if(!isset($disqus_identifier)) $disqus_identifier = $page->uri();
 if(!isset($disqus_url))        $disqus_url = thisURL();
+
+// sanatize the developer setting
+$disqus_developer = ($disqus_developer) ? 'true' : 'false';
 
 ?>
 <div id="disqus_thread"></div>
 <script type="text/javascript">
   var disqus_shortname  = '<?php echo $disqus_shortname ?>'; // required: replace example with your forum shortname
-  var disqus_title      = '<?php echo html(addslashes($disqus_title)) ?>';
-  var disqus_developer  = <?php echo $disqus_developer ?>; // developer mode
+  var disqus_title      = '<?php echo html($disqus_title) ?>';
+  var disqus_developer  = '<?php echo $disqus_developer ?>'; // developer mode
   var disqus_identifier = '<?php echo $disqus_identifier ?>';
   var disqus_url        = '<?php echo $disqus_url ?>';
 
