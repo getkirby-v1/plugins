@@ -25,7 +25,7 @@ var kmap = {
     
     var elem = document.createElement('div');
     elem.setAttribute('id', options.element);
-    elem.setAttribute('class', options.class);
+    elem.setAttribute('class', options.uclass);
     elem.style.width  = options.width + 'px';
     elem.style.height = options.height + 'px';
 
@@ -77,7 +77,7 @@ kmap.load({
   type    : '<?php echo $type ?>',
   width   : '<?php echo $width ?>',
   height  : '<?php echo $height ?>',
-  class   : '<?php echo $class ?>'  
+  uclass   : '<?php echo $class ?>'  
 });
 </script>
 <noscript id="<?php echo $id ?>" class="<?php echo $class ?>">
