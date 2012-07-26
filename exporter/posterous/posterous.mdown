@@ -1,0 +1,25 @@
+# Posterous Article Exporter
+
+This exporter will grab all articles from your Posterous blog and export them to folders and text files, which will be readable by Kirby. 
+
+## Installation
+
+Download posterous.php and put it in the main directory of your Kirby site. Open posterous.php in your favorite editor and setup the name of your blog, your posterous username and password and the posterous API token. You should also make sure that $root is setup to the folder where all the exported articles should be stored and that this folder is writable. (change permissions to 0755)
+
+MAKE A BACKUP OF YOUR CONTENT FOLDER TO BE SURE TO NOT LOSE ANY DATA.
+
+Open http://yourkirbydomain.com/posterous.php in your browser to start the exporter. 
+
+## Clean-Up
+
+Make sure to remove posterous.php once you've finished exporting all your articles. 
+
+## The exporter does not…
+
+- …export images from Posterous
+- …convert HTML in your Posterous articles to Markdown
+- …export Posterous pages or custom post types
+
+## Help needed!
+
+I could really need some help with improving the export so it will grab the images and videos and convert HTML to Markdown.
