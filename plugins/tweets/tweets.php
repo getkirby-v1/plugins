@@ -34,7 +34,7 @@ function tweets($username, $params=array()) {
   
   if(!empty($cache)) return $cache;
 
-  $url  = 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=' . $options['username'] . '&count=' . $options['limit'];
+  $url  = 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=' . $options['username'] . '&count=' . $options['limit'] . '&include_rts=true';
   $json = @file_get_contents($url);
   $data = str::parse($json);  
 
