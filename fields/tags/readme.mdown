@@ -1,0 +1,113 @@
+# Kirby Panel Tag field
+
+## What is this
+
+This is a custom tag field for the Kirby panel, which makes it easy to add multiple tags or other kinds of multiple entries to a single Kirby page. Content will be added in a comma-separated list. The tag field includes a nice javascript plugin, which is similar to Facebook's User input or Tags on the Mac. It also includes autocompletion.
+
+## Installation
+
+If not already exists, add a fields folder to your `site/panel` folder and copy the entire tags field folder there. Your structure should look like this: 
+
+	site
+		panel
+			tags
+				tags.css
+				tags.js
+				tags.php
+
+## In your blueprints
+
+As soon as you dropped the tags field into your panel folder you can use it in your blueprints: 
+
+	fields:
+		tags: 
+			label: My Tags
+			type:  tags
+
+This will render the default tags field and will look at sibling pages for matching tag suggestions. You got a bunch of options to customize the field though. 
+
+## Options
+
+### index
+
+You can choose between three different options where to get tag suggestions from: 
+
+1. siblings
+
+	The plugin will check all siblings in the same parent folder to look for tag suggestions. It will collect a unique list of tags from all the other pages
+
+2. template
+
+	The plugin will check through all pages of your site and select tags from those with the same template – no matter where they are located. It will collect a unique list of tags. 
+
+3. all
+
+	The plugin will fetch tags from all pages
+
+#### Example
+
+	fields:
+		tags: 
+			label: My Tags
+			type:  tags
+			index: template
+
+
+### field
+
+You can choose which field will be used to get tags from other pages. This makes it possible to not only use the tags field for – well, tags – but for all kinds of data from your site
+
+#### Example
+
+	fields:
+		tags: 
+			label: My Tags
+			type:  tags
+			index: template
+			field: title
+
+(This will pull titles from all pages with the same template as auto-suggestions)
+
+### lower
+
+For tags it's often useful to automatically lowercase all tags. You can use this option to do that:
+
+#### Example
+
+	fields:
+		tags: 
+			label:     My Tags
+			type:      tags
+			lowercase: true
+
+(the resulting tag string will be completely lowercase)
+
+### Separator
+
+Maybe you don't want to separate your data with comma. Set the separator character here. 
+
+#### Example
+
+	fields:
+		tags: 
+			label:     My Tags
+			type:      tags
+			separator: ;
+
+### data
+
+If you don't want to fetch suggestions from other pages, you can set your own array of strings, which will be used for autocompletion
+
+#### Example
+
+	fields:
+		tags: 
+			label: My Tags
+			type:  tags
+			data: 
+				- design
+				- architecture
+				- photography
+				- development
+				- web
+
