@@ -43,6 +43,7 @@ if(!isset($data) || !is_array($data)) {
 
 // make sure we get a nice array
 $data = array_values(array_unique($data));
+sort($data);
 
 ?>
 <input type="text" id="<?php echo $id ?>" class="input" name="<?php echo html($name) ?>" value="<?php echo html($value) ?>" />

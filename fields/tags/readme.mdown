@@ -84,7 +84,7 @@ For tags it's often useful to automatically lowercase all tags. You can use this
 
 ### Separator
 
-Maybe you don't want to separate your data with comma. Set the separator character here. 
+Maybe you don't want to separate your data by comma. Set the separator character here. 
 
 #### Example
 
