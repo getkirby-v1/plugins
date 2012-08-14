@@ -76,9 +76,9 @@ For tags it's often useful to automatically lowercase all tags. You can use this
 
 	fields:
 		tags: 
-			label:     My Tags
-			type:      tags
-			lowercase: true
+			label: My Tags
+			type:  tags
+			lower: true
 
 (the resulting tag string will be completely lowercase)
 
