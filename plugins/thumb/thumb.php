@@ -208,8 +208,8 @@ class thumb {
       'msg'    => 'The image could not be created'
     );
               
-    // make enough memory available to scale bigger images
-    ini_set('memory_limit', '36M');
+    // make enough memory available to scale bigger images (option should be something like 36M)
+    if(c::get('thumb.memory')) ini_set('memory_limit', c::get('thumb.memory'));
 
     if($this->crop == true) {
 
