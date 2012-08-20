@@ -10,7 +10,7 @@ class kirbytextExtended extends kirbytext {
   function javascript($params) {
       
     $file = $params['javascript'];
-    if(startsWith($file, 'http://') || starsWith($file, 'https://')) {
+    if(startsWith($file, 'http://') || starsWith($file, 'https://') || startsWith($file, '/')) {
       $url = $file;
     }
     else {
