@@ -1,0 +1,36 @@
+# EmbedJS
+
+## About
+
+- Version: 1.0
+- Date: 19.08.2012
+- Author: Sebastian Aigner (<http://sebastian-aigner.net/>), with the template of Bastian Allgeier <http://getkirby.com>
+- Support: provided as is, no support provided
+	
+## What is it?
+
+This plugin is a KirbyText extension which allows you to embed and use Javascript files on your website. It provides you with a new tag:
+
+	(javascript: file.js)
+
+## Installation
+
+Copy the `embedjs.php` file into your `site/plugins` folder. If the plugins folder doesn't exist yet, please create it. As a plugin, the file will be automatically loaded by Kirby.
+
+## How to use it?
+
+It's pretty easy to use. Copy your javascript files to `assets/javascript` (I'm pretty sure this folder doesn't exist it, so you might need to create it.)
+
+That's it. You can now use embedJS in the following ways:
+
+	(javascript: file.js)
+Will embed `file.js` into your website (where you put it.)
+
+	(javascript: http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js)
+Will embed `jquery.min.js` into your webpage (via HTTP)
+
+	(javascript: https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js)
+Will securely embed `jquery.min.js` into your webpage (via HTTPS)
+
+## Tips and Tricks
+Embedding Javascript will shortly stop the web page from being rendered further (try it out!). If you don't like how it renders, it might be a good idea to put _all_ your Script files either at the __beginning__ or at the __end__ of your KirbyText document.
