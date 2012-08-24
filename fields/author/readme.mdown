@@ -1,0 +1,24 @@
+# Kirby Panel Author field
+
+## What is this
+
+Automatically add the current logged in user's username to a text input field
+
+## Installation
+
+If not already exists, add a fields folder to your `site/panel` folder and copy the entire author  folder there. Your structure should look like this: 
+
+	site
+		panel
+			author
+				author.php
+
+## In your blueprints
+
+As soon as you dropped the author field into your panel folder you can use it in your blueprints: 
+
+	fields:
+		author: 
+			label: Author
+			type:  author
+
