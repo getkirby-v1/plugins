@@ -20,29 +20,29 @@ Example:
 
 Whenever you want to add a highlighted code snippet to your content, do it like this: 
 
-```php
-
-some php code
-
-```
-
-```html
-
-some html code 
-
-```
-
-```js
-
-some javascript code
-
-```
-
-```css
-
-some css code
-
-```
+	```php
+	
+	some php code
+	
+	```
+	
+	```html
+	
+	some html code 
+	
+	```
+	
+	```js
+	
+	some javascript code
+	
+	```
+	
+	```css
+	
+	some css code
+	
+	```
 
 	    
 ## Author
