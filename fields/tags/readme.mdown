@@ -111,3 +111,22 @@ If you don't want to fetch suggestions from other pages, you can set your own ar
 				- development
 				- web
 
+
+### Global setup
+
+If you do not want to setup 'index: template' or 'index: siblings' for each of your site's template files (ie, default.php) just because it's different from the default tag setup, simply put the following within your config.php file
+
+	/*
+
+	---------------------------------------
+	Panels Fields Defaults
+	---------------------------------------
+
+	Change the default file extension for your
+	content files here if you'd rather use something
+	else than txt. For example md or mdown.
+
+	*/
+
+    c::set('fields.tags.index', 'siblings');
+
