@@ -21,6 +21,12 @@
  * c::set('email.use', 'postmark');
  * c::set('email.postmark.key', 'Your Postmark Key');
  * 
+ * Config for Mailgun:
+ * 
+ * c::set('email.use', 'mailgun');
+ * c::set('email.mailgun.key', 'Your Mailgun Key');
+ * c::set('email.mailgun.domain', 'Your Mailgun Domain');
+ * 
  * Usage:
  * 
  * $send = email(array(
@@ -59,6 +65,10 @@ class email {
       // postmark api defaults
       'postmark.key'  => c::get('email.postmark.key'),
       'postmark.test' => c::get('email.postmark.test'),
+
+      // mailgun api defaults
+      'mailgun.key'  => c::get('email.mailgun.key'),
+      'mailgun.domain' => c::get('email.mailgun.domain'),
 
       // amazon api defaults
       'amazon.key'    => c::get('email.amazon.key'),
@@ -149,6 +159,50 @@ class email {
       'status'   => 'success',
       'msg'      => l::get('email.success', 'The mail has been sent'),
       'response' => $response    
+    );
+      
+  }
+
+  private function sendWithMailgun() {
+
+    if(!$this->options['mailgun.key']) return array(
+      'status' => 'error',
+      'msg'    => l::get('email.error.invalid.key', 'Invalid API key'),     
+    );
+
+    if(!$this->options['mailgun.domain']) return array(
+      'status' => 'error',
+      'msg'    => l::get('email.error.invalid.domain', 'Invalid API domain'),     
+    );
+
+    $url = 'https://api.mailgun.net/v2/'.$this->options['mailgun.domain'].'/messages';
+    $auth = base64_encode('api:'.$this->options['mailgun.key']);
+
+    $headers = array(
+      'Accept: application/json',
+      'Authorization: Basic '.$auth
+    );
+
+    $data = array(
+      'from'     => $this->options['from'],
+      'to'       => $this->options['to'],
+      'subject'  => $this->options['subject'],
+      'text' => $this->options['body']
+    );
+
+    $response = $this->post($url, $data, array('headers' => $headers));
+    $code = @$response['http_code'];
+    
+    if($code != 200) return array(
+      'status' => 'error',
+      'msg' => l::get('email.error', 'The mail could not be sent!'),
+      'response' => $response
+    );
+    
+    return array(
+      'status' => 'success',
+      'msg' => l::get('email.success', 'The mail has been sent'),
+      'response' => $response
     );
       
   }
