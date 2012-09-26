@@ -1,0 +1,9 @@
+.form .field.fileselect {
+  margin-right: -20px;
+}
+.form .field.fileselect select {
+  display: block;
+  margin-top: -2px;
+  width: 100%;
+  margin-bottom: 5px;
+}

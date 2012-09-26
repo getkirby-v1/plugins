@@ -1,0 +1,68 @@
+# Kirby Panel Fileselect field
+
+## What is this
+
+This is a custom fileselect field for the Kirby panel, which makes it easy to select an uploaded file from the current page and add it to your content txt as a separate field.
+
+## Installation
+
+If not already exists, add a fields folder to your `site/panel` folder and copy the entire tags field folder there. Your structure should look like this: 
+
+	site
+		panel
+			fileselect
+				fileselect.css
+				fileselect.php
+
+## In your blueprints
+
+As soon as you dropped the fileselect field into your panel folder you can use it in your blueprints: 
+
+	fields:
+		file: 
+			label: My File
+			type:  fileselect
+
+This will render a select field with all available files for the current page. 
+
+## Options
+
+### empty
+
+Add a first "empty" option to the select field with a custom label. This makes it possible to not select a file at all. 
+
+#### Example
+
+	fields:
+		file: 
+			label: My File
+			type:  fileselect
+			empty: Select a file
+
+
+### filetype
+
+Filter the list of files, which are used for the select field by filetype. Available filetypes are image, video, document, sound, other. You can specify more than just one type
+
+#### Example
+
+	fields:
+		file: 
+			label:    My File
+			type:     fileselect
+			filetype: 
+				- document
+
+### extension
+
+Filter the list of files, which are used for the select field by extension. You can specify more than just on extension and even combine this with filetype filtering for more control 
+
+#### Example
+
+	fields:
+		file: 
+			label:     My File
+			type:      fileselect
+			extension: 
+				- jpg
+				- png
