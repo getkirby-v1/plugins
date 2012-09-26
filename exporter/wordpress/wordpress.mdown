@@ -20,6 +20,10 @@ Make sure to remove wordpress.php once you've finished exporting all your articl
 - …convert HTML in your Wordpress articles to Markdown
 - …export Wordpress pages or custom post types
 
+## Troubleshooting
+
+If the exporter keeps on failing, please try to disable all Wordpress plugins and switch to the default theme. 
+
 ## Help needed!
 
 I could really need some help with improving the export so it will convert HTML to Markdown or at least clean the HTML. 
