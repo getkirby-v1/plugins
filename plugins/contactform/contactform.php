@@ -68,7 +68,7 @@ class ContactForm extends Submission {
     
     if(empty($body)) {
 
-      $body = snippet('contactform.mail');
+      $body = snippet('contactform.mail', array(), true);
       
       if(empty($body)) {
         $body  = 'Name: {name}' . PHP_EOL;
