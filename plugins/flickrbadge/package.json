@@ -1,0 +1,9 @@
+{
+    "name": "flickrbadge",
+    "readable": "Flickrbadge",
+    "version": "1.0",
+    "stable": true,
+    "description": "Display the latest pictures from your Flickr account",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

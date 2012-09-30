@@ -1,0 +1,9 @@
+{
+    "name": "related",
+    "readable": "Related",
+    "version": "1.0",
+    "stable": true,
+    "description": "Link related pages via their URI",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

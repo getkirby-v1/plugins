@@ -1,0 +1,9 @@
+{
+    "name": "map",
+    "readable": "Google Maps",
+    "version": "1.0",
+    "stable": true,
+    "description": "Display a Google Maps map",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

@@ -1,0 +1,9 @@
+{
+    "name": "breadcrumb",
+    "readable": "Breadcrumb",
+    "version": "1.0",
+    "stable": true,
+    "description": "Display a breadcrumb navigation on your site",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

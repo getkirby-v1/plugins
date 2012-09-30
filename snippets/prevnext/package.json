@@ -1,0 +1,9 @@
+{
+    "name": "prevnext",
+    "readable": "Prev Next",
+    "version": "1.0",
+    "stable": true,
+    "description": "Adds a prev page/next page snippet to your website",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

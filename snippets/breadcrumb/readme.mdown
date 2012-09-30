@@ -1,0 +1,22 @@
+# Breadcrumb Snippet
+
+## What is it?
+
+A snippet which generates a breadcrumb for your site: 
+For example: Home > Projects > Project 1
+
+## Installation 
+
+Put the breadcrumb.php file in your site/snippets folder
+
+## How to use it?
+
+    <?php snippet('breadcrumb') ?>
+	    
+## Customization
+
+Customize the html in site/snippets/breadcrumb.php to fit your site
+
+## Author
+Bastian Allgeier
+<http://getkirby.com>

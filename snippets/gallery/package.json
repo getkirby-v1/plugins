@@ -1,0 +1,9 @@
+{
+    "name": "gallery",
+    "readable": "Gallery",
+    "version": "1.0",
+    "stable": true,
+    "description": "Generate a list of images",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

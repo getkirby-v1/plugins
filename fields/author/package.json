@@ -1,0 +1,9 @@
+{
+    "name": "author",
+    "readable": "Author",
+    "version": "1.0",
+    "stable": true,
+    "description": "Panel field to automatically add the current logged in user's username to a text input field",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

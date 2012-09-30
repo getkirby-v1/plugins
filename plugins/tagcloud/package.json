@@ -1,0 +1,9 @@
+{
+    "name": "tagcloud",
+    "readable": "Tagcloud",
+    "version": "0.9",
+    "stable": true,
+    "description": "Display a tag cloud",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

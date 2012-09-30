@@ -1,0 +1,9 @@
+{
+    "name": "wordpress",
+    "readable": "Wordpress",
+    "version": "0.1",
+    "stable": true,
+    "description": "Export articles from a Wordpress blog and import them into Kirby",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

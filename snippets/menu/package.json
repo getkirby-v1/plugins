@@ -1,0 +1,9 @@
+{
+    "name": "menu",
+    "readable": "Menu",
+    "version": "1.0",
+    "stable": true,
+    "description": "Generate a main menu of your site based on visible pages.",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}
