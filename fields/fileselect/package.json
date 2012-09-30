@@ -1,0 +1,9 @@
+{
+    "name": "fileselect",
+    "readable": "Fileselect",
+    "version": "1.0",
+    "stable": true,
+    "description": "Panel field to add a page's file to an extra field",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

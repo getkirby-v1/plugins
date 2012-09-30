@@ -1,0 +1,9 @@
+{
+    "name": "disqus",
+    "readable": "Disqus",
+    "version": "1.0",
+    "stable": true,
+    "description": "Embed your Disqus comments",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

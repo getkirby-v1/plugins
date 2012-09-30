@@ -1,0 +1,9 @@
+{
+    "name": "sublimevideo",
+    "readable": "SublimeVideo",
+    "version": "1.1",
+    "stable": true,
+    "description": "Use the SublimeVideo HTML5 player to display videos",
+    "author": "Thibaut Ninove",
+    "url": "http://wooconcept.com/"
+}

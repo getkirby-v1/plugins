@@ -1,0 +1,9 @@
+{
+    "name": "tweets",
+    "readable": "Tweets",
+    "version": "1.0",
+    "stable": true,
+    "description": "Display the latest tweets from any public Twitter account",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

@@ -1,0 +1,9 @@
+{
+    "name": "posterous",
+    "readable": "Posterous",
+    "version": "0.1",
+    "stable": true,
+    "description": "Export articles from a Posterous blog and import them into Kirby",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

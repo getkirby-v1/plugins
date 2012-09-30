@@ -1,0 +1,9 @@
+{
+    "name": "pagination",
+    "readable": "Pagination",
+    "version": "1.0",
+    "stable": true,
+    "description": "Adds full-flavoured pagination to your site",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

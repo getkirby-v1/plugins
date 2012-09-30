@@ -1,0 +1,9 @@
+{
+    "name": "randomimage",
+    "readable": "Random Image",
+    "version": "1.0",
+    "stable": true,
+    "description": "Display a random image from a given folder",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

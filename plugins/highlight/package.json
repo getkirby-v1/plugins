@@ -1,0 +1,9 @@
+{
+    "name": "highlight",
+    "readable": "Highlight",
+    "version": "0.1",
+    "stable": false,
+    "description": "Create Geshi highlighted code snippets from within Kirbytext",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

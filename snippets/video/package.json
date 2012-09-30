@@ -1,0 +1,9 @@
+{
+    "name": "video",
+    "readable": "Video",
+    "version": "1.0",
+    "stable": true,
+    "description": "Helper to create HTML5 video tags",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

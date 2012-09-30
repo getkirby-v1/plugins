@@ -1,0 +1,9 @@
+{
+    "name": "treemenu",
+    "readable": "Treemenu",
+    "version": "1.0",
+    "stable": true,
+    "description": "Adds a tree menu to your site",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

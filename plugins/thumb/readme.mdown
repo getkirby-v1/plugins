@@ -1,0 +1,62 @@
+# Thumb Plugin
+
+## What is it?
+
+The thumb plugin makes it easy to include smaller, resized versions of your images in your pages without adding extra code or uploading smaller versions yourself. 
+
+## Installation 
+
+Put the thumb.php file in your site/plugins folder. Add the plugins folder if it isn't there yet. Add a thumbs folder to the root dir of your site and make sure it is writable. If you want to change the location of your thumbs cache folder read more about the available default settings further down. 
+
+## How to use it?
+
+	<?php thumb($image, array('width' => 200, 'height' => 150)); ?>
+
+or a more extended version:
+
+    thumb($image, array(
+      'width'   => 200,
+      'height'  => 200,
+      'quality' => 90,
+      'upscale' => true,
+      'crop'    => true,
+    ));
+
+## Available options
+
+### width
+
+set the maximum width of your image
+
+### height
+
+set the maximum height of your image
+
+### quality
+
+set the jpeg compression quality of your image. (0-100)
+
+### upscale
+
+If this is set to true, images will be upscaled to the maximum height or width.
+
+### crop
+
+Set this to true to crop the image to the given width and height. Upscale is true by default in this case.
+
+## Available settings
+
+You can add the following config variables to your config file (site/config/config.php) to adjust the default settings of the thumb plugin:
+
+    c::set('thumb.cache.root', c::get('root') . '/thumbs');
+    c::set('thumb.cache.url',  c::get('url')  . '/thumbs');
+    c::set('thumb.quality', 100);
+    c::set('thumb.upscale', false);
+
+## Requirements
+
+You must have GD Lib installed on your server to make this work. 
+	    
+## Author
+Bastian Allgeier
+<http://getkirby.com>
