@@ -1,0 +1,9 @@
+{
+    "name": "readlater",
+    "readable": "Read later",
+    "version": "1.0",
+    "stable": true,
+    "description": "Save a page for later reading. Supports Instapaper and Pocket.",
+    "author": "Roy Lodder",
+    "url": "http://roylodder.com/"
+}

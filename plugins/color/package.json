@@ -1,0 +1,9 @@
+{
+    "name": "color",
+    "readable": "Color",
+    "version": "1.0",
+    "stable": true,
+    "description": "A class to work with colors",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

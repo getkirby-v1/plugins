@@ -1,0 +1,75 @@
+# SublimeVideo
+	
+## What is it?
+
+This plugin is a Kirbytext extension, in order to easily use the [SublimeVideo HTML5 Player](http://sublimevideo.net/). It provides you with a new tag:
+
+	(sublime: video-name width: xxx height: yyy)
+
+## Installation
+
+1. Copy the `sublimevideo.php` file into your `site/plugins` folder. If the plugins folder doesn't exist yet, please create it. As a plugin, the file will be automatically loaded by Kirby.
+
+2. Put your SublimeVideo embed code inside the `<head>` tag of your site. It should look like this :
+
+```html
+<script type="text/javascript" src="http://cdn.sublimevideo.net/js/YOUR_TOKEN.js"></script>
+```
+
+Please note that you need to have a [SublimeVideo account](http://sublimevideo.net/plans) (free). This service is very easy to use but if you need help, please refer to [their documentation](http://docs.sublimevideo.net/quickstart-guide). I am also not going to discuss [video encoding](http://docs.sublimevideo.net/encode-videos-for-the-web) here.
+
+## How to use it?
+
+This tag will load all video files and an image poster file from the current page folder, which match the video-name value. Here's a list of example files:
+
+- myvideo.hd.mp4
+- myvideo.hd.ogv
+- myvideo.hd.webm
+- myvideo.mobile.mp4
+- myvideo.mobile.ogv
+- myvideo.mobile.webm
+- myvideo.poster.png
+- myvideo.standard.mp4
+- myvideo.standard.ogv
+
+Use the tag…
+
+	(sublime: myvideo width: 400 height: 300)
+
+…in your text to automatically load the SublimeVideo with all matching files. 
+
+Adding `.hd` and `.standard` to files with the same extension will mark files as HD and low-res video files and will enable [SublimeVideo HD switching](http://docs.sublimevideo.net/hd-switching) You can also add the `.mobile` prefix to specify a file, which will be used on mobile devices. 
+
+If you add an additional image file with the same naming convention (i.e. `myvideo.poster.png`) this file will be used as a preview as long as the video has not been loaded yet and if video playback is not available. 
+
+### Attributes
+
+- `sublime`: the files common name
+- `width`: the width of the video 
+- `height`: the height of the video
+- `uid`: a unique id (optional), which will appear in the [SublimeVideo stats](http://docs.sublimevideo.net/optimize-for-stats)
+- `name`: the name of the video (optional), which will appear in the [SublimeVideo stats](http://docs.sublimevideo.net/optimize-for-stats)
+- `class`: an additional class name, which will be added to the video tag. SublimeVideo tags already have a sublime class by default, but you can use this optionally to add another class. 
+
+### Full Example
+
+	(sublime: myvideo width: 540 height: 304 name: My awesome video uid: myvideo class: myvideo)
+
+## Shortcut
+
+If you need to embed SublimeVideos directly in your template or snippet files you can use the available shortcut function:
+
+```php
+
+<?php echo sublime('myvideo', 300, 400) ?>
+
+```
+
+## Support
+
+Provided as is, no support provided
+
+## Author
+
+Author: Thibaut Ninove ([WooConcept](http://wooconcept.com))
+Contributor: Bastian Allgeier <http://getkirby.com>

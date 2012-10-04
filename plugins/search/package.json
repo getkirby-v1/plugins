@@ -1,0 +1,9 @@
+{
+    "name": "search",
+    "readable": "Search",
+    "version": "0.9",
+    "stable": true,
+    "description": "Provide a search form for your site",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

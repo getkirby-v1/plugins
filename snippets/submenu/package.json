@@ -1,0 +1,9 @@
+{
+    "name": "submenu",
+    "readable": "Submenu",
+    "version": "1.0",
+    "stable": true,
+    "description": "Generate a sub menu for a page with visible children",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

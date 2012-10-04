@@ -1,0 +1,65 @@
+# Search Plugin (Beta)
+
+## What is it?
+
+The search plugin makes it possible to search the entire content of your site and to build a nice search form for your users.
+
+## Installation 
+
+Put the search.php file in your site/plugins folder. 
+
+## How to use it?
+
+    $search  = new search(array('searchfield' => 'search'));
+    $results = $search->results();
+
+## Available options
+
+### searchfield
+
+The name of the html search field. This will also build the param in your URL: 
+http://yourdomain.com/search/fieldname:searchword
+
+### query
+
+Instead of passing a search field you can also pass a query string instead, which will be used to search for. The search won't be connected to a search form that way, but you can use it to manually search by that query. 
+
+### fields
+
+An array of field names to search in. By default all fields will be searched.
+
+### mode ("and" or "or" | default is "or")
+
+Switch between "and" or "or" as search mode. 
+
+### score
+
+An array with field names as keys and score values, which will be mulitplied with the hits per field to get a more valid result
+
+### words (default = false)
+
+Set this to true to search for full words only instead of strings within words.
+
+### ignore
+
+An array of uris which should be ignored. This is perfect to not show "secret" pages in results or to skip the error page for example.
+
+### in
+
+Specify a URI here to search within the children of that page instead of the entire site.
+
+### minlength
+
+The minimum length of searchwords.
+
+### stopwords
+
+An array of stopwords, which will not be considered during search.
+
+### paginate
+
+Automatically paginate the final result. Add a number of rows to return for each result page. 
+	    
+## Author
+Bastian Allgeier
+<http://getkirby.com>

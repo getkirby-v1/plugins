@@ -1,0 +1,9 @@
+{
+    "name": "email",
+    "readable": "Email",
+    "version": "1.0",
+    "stable": true,
+    "description": "Send mails via mail(), Amazon SES and Postmark",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

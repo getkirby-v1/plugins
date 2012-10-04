@@ -1,0 +1,9 @@
+{
+    "name": "flattr",
+    "readable": "Flattr",
+    "version": "1.0",
+    "stable": true,
+    "description": "Embed a Flattr button on your site",
+    "author": "André Dujardin",
+    "url": "http://djdn.de/"
+}

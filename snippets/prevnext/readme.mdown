@@ -1,0 +1,21 @@
+# PrevNext Snippet
+
+## What is it?
+
+Puts a "previous page | next page" navigation on your pages. 
+
+## Installation 
+
+Put the prevnext.php file in your site/snippets folder
+
+## How to use it?
+
+    <?php snippet('prevnext') ?>
+	    
+## Customization
+
+Change the html in site/snippets/prevnext.php
+
+## Author
+Bastian Allgeier
+<http://getkirby.com>

@@ -1,0 +1,9 @@
+{
+    "name": "tags",
+    "readable": "Tags",
+    "version": "1.0",
+    "stable": true,
+    "description": "Panel field to add tags to a page",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

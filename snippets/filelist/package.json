@@ -1,0 +1,9 @@
+{
+    "name": "filelist",
+    "readable": "Filelist",
+    "version": "1.0",
+    "stable": true,
+    "description": "Build a list of all available files for a page",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

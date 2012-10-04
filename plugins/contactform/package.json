@@ -1,0 +1,9 @@
+{
+    "name": "contactform",
+    "readable": "Contactform",
+    "version": "0.1",
+    "stable": false,
+    "description": "Render and submit a simple contact form",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

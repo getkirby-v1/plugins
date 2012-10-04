@@ -1,0 +1,48 @@
+# Filelist Snippet
+
+## What is it?
+
+Filelist will generate a list of all or any matching files in your page's content folder. This is pretty handy for building download lists for example. 
+
+## Installation 
+
+Put the filelist.php file in your site/snippets folder
+
+## How to use it?
+
+    <?php snippet('filelist'); ?>
+	 
+## Options
+
+    <?php
+    
+    snippet('filelist', array(
+      'extension' => 'zip',
+      'sort'      => 'filename',
+      'direction' => 'desc' // can be asc or desc
+    )); 
+    
+    ?>
+
+By passing additional variables you can customize the output of your list: 
+
+### extension
+
+Set the extension to only get a list of files with that extension. All files will be found by default if you don't specify an extension
+
+### sort
+
+Change the sort field. Default is "filename"
+
+### direction
+
+Change the sort direction. Default is "desc"
+
+   
+## Customization
+
+Customize the html in site/snippets/gallery.php to get the best result for your project
+
+## Author
+Bastian Allgeier
+<http://getkirby.com>

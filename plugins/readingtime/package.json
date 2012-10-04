@@ -1,0 +1,9 @@
+{
+    "name": "readingtime",
+    "readable": "Reading Time"
+    "version": "1.0",
+    "stable": true,
+    "description": "Estimate the reading time for your content",
+    "author": "Roy Lodder",
+    "url": "http://roylodder.com/"
+}
