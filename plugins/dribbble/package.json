@@ -1,0 +1,9 @@
+{
+    "name": "dribbble",
+    "readable": "Dribbble",
+    "version": "1.2",
+    "stable": true,
+    "description": "Fetch player shots from Dribbble",
+    "author": "Simon Albrecht",
+    "url": "http://albrecht.me"
+}
