@@ -60,22 +60,49 @@ $dateformat = 'Y-m-d H:i';
 // DON'T TOUCH THE LINES BELOW
 // ===========================
 
-require('kirby/lib/kirby.php');
-
-if($username == 'admin' && $password == 'yourpassword' && $blog == 'http://yourdomain.com/blog') {
-  die('Please setup the credentials for your Wordpress blog. <br />Open <strong>wordpress.php</strong> in your favorite editor and follow the instructions.');
+// Stuff to run it with kpm
+if(isset($kpm)) {
+  @extract($kpm['options']);
+  $root = $kpm['contentdir'];
+  
+  function puterror($error) {
+    kpmerror($error);
+  }
+  
+  function putmessage($message) {
+    kpmlog($message);
+  }
+  
+  function putweb() {}
+} else {
+  require('kirby/lib/kirby.php');
+  function puterror($error) {
+    dir($error);
+  }
+  
+  function putmessage($message) {
+    echo $message;
+  }
+  
+  function putweb($message) {
+    echo $message;
+  }
 }
 
-if(!is_dir($root)) die('The blog directory does not exist');
-if(!is_writable($root)) die('The blog directory is not writable');
+if($username == 'admin' && $password == 'yourpassword' && $blog == 'http://yourdomain.com/blog') {
+  puterror('Please setup the credentials for your Wordpress blog. <br />Open <strong>wordpress.php</strong> in your favorite editor and follow the instructions.');
+}
+
+if(!is_dir($root)) puterror('The blog directory does not exist');
+if(!is_writable($root)) puterror('The blog directory is not writable');
 
 $rpc      = new IXR_Client($blog . '/xmlrpc.php');
 $status   = $rpc->query('metaWeblog.getRecentPosts',	1, $username, $password,	9999);
 $posts    = array();
 $response = $rpc->getResponse();
 
-if(!$status) die('An error occurred - '.$rpc->getErrorMessage());
-if(empty($response)) die('No articles could be found');
+if(!$status) puterror('An error occurred - '.$rpc->getErrorMessage());
+if(empty($response)) puterror('No articles could be found');
 
 foreach($response as $post) {
 
@@ -92,7 +119,7 @@ foreach($response as $post) {
   
 }
 
-if(empty($posts)) die('No articles have been found');
+if(empty($posts)) puterror('No articles have been found');
 
 function pad($number,$n) {
   return str_pad((int) $number,$n,"0",STR_PAD_LEFT);
@@ -140,14 +167,14 @@ foreach(array_reverse($posts) as $post) {
     
 }
 
-echo 'Exported ' . $n . ' articles to ' . $root . '<br /><br />';
+putmessage('Exported ' . $n . ' articles to ' . $root . '<br /><br />');
 
 if(!empty($errors)) {
-  echo count($errors) . ' article(s) could not be imported<br /><br />';
+  putmessage(count($errors) . ' article(s) could not be imported<br /><br />');
 }
 
 if(!empty($skipped)) {
-  echo 'The following folders have been skipped, because they already existed:' . a::show($skipped, false);
+  putmessage('The following folders have been skipped, because they already existed:' . a::show($skipped, false));
 }
 
 
@@ -463,7 +490,7 @@ class IXR_Server {
             global $HTTP_RAW_POST_DATA;
             if (!$HTTP_RAW_POST_DATA) {
                header( 'Content-Type: text/plain' );
-               die('XML-RPC server accepts POST requests only.');
+               puterror('XML-RPC server accepts POST requests only.');
             }
             $data = &$HTTP_RAW_POST_DATA;
         }
@@ -550,7 +577,7 @@ EOD;
         header('Content-Length: '.$length);
         header('Content-Type: text/xml');
         header('Date: '.date('r'));
-        echo $xml;
+        putweb($xml);
         exit;
     }
     function hasMethod($method) {
@@ -705,7 +732,7 @@ class IXR_Client {
         $request .= $xml;
         // Now send the request
         if ($this->debug) {
-            echo '<pre class="ixr_request">'.htmlspecialchars($request)."\n</pre>\n\n";
+            putweb('<pre class="ixr_request">'.htmlspecialchars($request)."\n</pre>\n\n");
         }
         if ($this->timeout) {
             $fp = @fsockopen($this->server, $this->port, $errno, $errstr, $this->timeout);
@@ -743,7 +770,7 @@ class IXR_Client {
             }
         }
         if ($this->debug) {
-            echo '<pre class="ixr_response">'.htmlspecialchars($debug_contents)."\n</pre>\n\n";
+            putweb('<pre class="ixr_response">'.htmlspecialchars($debug_contents)."\n</pre>\n\n");
         }
         // Now parse what we've got back
         $this->message = new IXR_Message($contents);
