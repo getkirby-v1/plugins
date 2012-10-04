@@ -5,5 +5,9 @@
     "stable": true,
     "description": "Panel field to automatically add the current logged in user's username to a text input field",
     "author": "Bastian Allgeier",
-    "url": "http://getkirby.com/"
+    "url": "http://getkirby.com/",
+
+    "dependencies": {
+    	"panel": "0.8"
+    }
 }
