@@ -1,0 +1,9 @@
+{
+    "name": "instagram",
+    "readable": "Instagram",
+    "version": "1.1",
+    "stable": true,
+    "description": "Fetch images from Instagram",
+    "author": "Simon Albrecht",
+    "url": "http://albrecht.me"
+}
