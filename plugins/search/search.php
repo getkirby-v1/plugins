@@ -19,6 +19,9 @@ class search {
   // uris to ignore
   var $ignore;
 
+  // pages to include (all, visible, invisible)
+  var $include;
+
   // a uri to search within
   var $in;
   
@@ -51,6 +54,7 @@ class search {
     $this->score       = a::get($options, 'score', array());
     $this->words       = a::get($options, 'words');
     $this->ignore      = a::get($options, 'ignore', array());
+    $this->include     = a::get($options, 'include', 'all');
     $this->in          = a::get($options, 'in');
     $this->minlength   = a::get($options, 'minlength', false);
     $this->stopwords   = a::get($options, 'stopwords', array());
@@ -87,6 +91,9 @@ class search {
     $pages = ($this->in) ? $site->pages()->find($this->in)->children()->index() : $site->pages()->index();                        
     
     foreach($pages as $page) {
+
+      if($this->include == 'visible' && !$page->isVisible()) continue;
+      if($this->include == 'invisible' && $page->isVisible()) continue;
           
       if(in_array($page->uri(), $this->ignore)) continue;
       
