@@ -44,6 +44,10 @@ Set this to true to search for full words only instead of strings within words.
 
 An array of uris which should be ignored. This is perfect to not show "secret" pages in results or to skip the error page for example.
 
+### include
+
+The include option makes it possible to take control of which pages are included in search results. You get the following options: "all", "visible", "invisible"
+
 ### in
 
 Specify a URI here to search within the children of that page instead of the entire site.
