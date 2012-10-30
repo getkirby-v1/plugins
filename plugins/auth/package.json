@@ -1,0 +1,9 @@
+{
+    "name": "auth",
+    "readable": "Authentication",
+    "version": "1.0",
+    "stable": false,
+    "description": "Restrict user access to frontend pages",
+    "author": "Bastian Allgeier",
+    "url": "http://getkirby.com/"
+}

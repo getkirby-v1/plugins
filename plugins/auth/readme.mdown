@@ -1,0 +1,134 @@
+# Authentication Plugin
+
+## What is it?
+
+The Authentication plugin makes it possible to create user accounts and user groups for your website and restrict access to certain parts. 
+
+## Installation 
+
+- Copy the auth folder to your site/plugins folder.
+- Copy auth/snippets/login.php to your snippets folder and optionally customize it
+- Create an invisible content/login folder with a login.txt
+- Create a login.php template in site/templates and include the login form snippet. I.e.:
+
+    <!-- site/templates/login.php -->
+
+    <?php snippet('header') ?>
+    <?php snippet('login') ?>
+    <?php snippet('footer') ?>
+
+- Create an invisible content/logout folder with a logout.txt
+- Crate a logout.php template in site/templates: 
+
+    <?php Auth::logout() ?>
+
+- Create an site/accounts folder and add your first user account. Use the username as filename (ie. yourusername.php)
+
+    <?php if(!defined('KIRBY')) exit ?>
+
+    # setup your account credentials here
+    # it's highly recommended to use md5 or sha1 encryption 
+    # for your passwords. read more about encryption in the
+    # docs: http://getkirby.com/docs/panel/accounts
+
+    username: yourusername
+    password: yourpassword
+    group:    optional-group-name
+
+
+Now you have a fully functional login/logout system. 
+
+## Setting up the firewall
+
+### Full restriction
+
+If you want to restrict access to all your pages, I recommend to add the firewall to your header.php snippet:
+
+    <?php Auth::firewall() ?>
+
+This will block access to all pages for all unauthenticated users.
+
+
+### Restriction per template
+
+If you want to fine-tune access to certain templates you should add the firewall as the first line of each template, which should have restricted access.
+
+### General blocking + fine-tuning 
+
+As a third alternative you can setup a general firewall in the header.php snippet and an additional firewall for single templates. This will give you full control over who can access what. 
+
+## Customizing the firewall
+
+The firewall has a bunch of settings, which can be used to give access to certain users or groups
+
+### redirect (default: login)
+
+By default the firewall is redirecting to the login page, but you can change the redirect url with this option:
+
+    // This firewall will redirect to the homepage
+    Auth::firewall(array(
+      'redirect' => '/'
+    ));
+
+    // This firewall will redirect to the error page
+    Auth::firewall(array(
+      'redirect' => 'error'
+    ));
+
+### logout (default: true)
+
+By default the firewall will logout users which are not allowed to access the current page. You can change this here:
+
+    // This firewall will just redirect but not logout
+    Auth::firewall(array(
+      'logout' => false
+    ));
+
+
+### allow
+
+By default the firewall will allow access to all available users and groups. You can fine-tune this here:
+
+    // This firewall will only grant access to the user "yourusername"
+    Auth::firewall(array(
+      'allow' => array('user:yourusername')
+    ));
+
+    // This firewall will only grant access to users in the group "admin"
+    Auth::firewall(array(
+      'allow' => array('group:admin')
+    ));
+
+    // This firewall will only grant access to users in the group "admin" and a user "bart"
+    Auth::firewall(array(
+      'allow' => array('group:admin', 'user:bart')
+    ));
+
+### deny
+
+You can also deny certain users or groups
+
+    Auth::firewall(array(
+      'deny' => array('user:yourusername', 'group:editors')
+    ));
+
+Deny will overwrite allow rules. 
+
+## The login snippet
+
+The login snippet should be customized to fit your needs for the login form. 
+The Auth::login() method will always be needed in the first line to make the form work. 
+You can set the redirect URL, which will be used to redirect users after a successful login. 
+By default users will be taken to the homepage:
+
+    <?php $login = Auth::login('somepage') ?>
+
+## The logout template
+
+In the logout template you are also able to specify the redirect URL after logouts like this: 
+
+    <?php Auth::logout('somepage') ?>
+
+
+
+
