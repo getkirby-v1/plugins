@@ -65,16 +65,37 @@ $dateformat = 'Y-m-d H:i';
 // DON'T TOUCH THE LINES BELOW
 // ===========================
 
-set_time_limit(0);
-
-require('kirby/lib/kirby.php');
-
-if($username == 'your@email-address.com' && $password == 'yourpassword' && $blog == 'yourblog') {
-  die('Please setup the credentials for your Posterous blog. <br />Open <strong>posterous.php</strong> in your favorite editor and follow the instructions.');
+// Stuff to run it with kpm
+if(isset($kpm)) {
+  @extract($kpm['options']);
+  $root = $kpm['contentdir'];
+  
+  function puterror($error) {
+    kpmerror($error);
+  }
+  
+  function putmessage($message) {
+    kpmlog($message);
+  }
+} else {
+  require('kirby/lib/kirby.php');
+  function puterror($error) {
+    dir($error);
+  }
+  
+  function putmessage($message) {
+    echo $message;
+  }
 }
 
-if(!is_dir($root)) die('The blog directory does not exist');
-if(!is_writable($root)) die('The blog directory is not writable');
+set_time_limit(0);
+
+if($username == 'your@email-address.com' && $password == 'yourpassword' && $blog == 'yourblog') {
+  puterror('Please setup the credentials for your Posterous blog. <br />Open <strong>posterous.php</strong> in your favorite editor and follow the instructions.');
+}
+
+if(!is_dir($root)) puterror('The blog directory does not exist');
+if(!is_writable($root)) puterror('The blog directory is not writable');
 
 $posts = array();
 $page  = 1;
@@ -93,7 +114,7 @@ while($data = $p->call('http://posterous.com/api/2/sites/' . $blog . '/posts/pub
   
 }
 
-if(!$posts) die('The posts couldn\'t be found');
+if(!$posts) puterror('The posts couldn\'t be found');
 
 $cnt = count($posts);
 $len = str::length($cnt);
@@ -141,14 +162,14 @@ foreach(array_reverse($posts) as $post) {
     
 }
 
-echo 'Exported ' . $n . ' articles to ' . $root . '<br /><br />';
+putmessage('Exported ' . $n . ' articles to ' . $root . '<br /><br />');
 
 if(!empty($errors)) {
-  echo count($errors) . ' article(s) could not be imported<br /><br />';
+  putmessage(count($errors) . ' article(s) could not be imported<br /><br />');
 }
 
 if(!empty($skipped)) {
-  echo 'The following folders have been skipped, because they already existed:' . a::show($skipped, false);
+  putmessage('The following folders have been skipped, because they already existed:' . a::show($skipped, false));
 }
 
 // padding zero function 

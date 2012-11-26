@@ -5,5 +5,14 @@
     "stable": true,
     "description": "Export articles from a Posterous blog and import them into Kirby",
     "author": "Bastian Allgeier",
-    "url": "http://getkirby.com/"
+    "url": "http://getkirby.com/",
+
+    "params": {
+    	"blog": "Your Posterous blog",
+    	"username": "Your Posterous username (email)",
+    	"password": "Your Posterous password",
+    	"token": "Your Posterous API token",
+    	"template": "The desired name for your content files (for example article.txt)",
+    	"dateformat": "Setup the date format to use in content files (default 2012-02-09 16:00)"
+    }
 }
