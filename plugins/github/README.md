@@ -1,7 +1,7 @@
 GitHub Plugin for Kirby
 =======================
 
-With that plugin you can implement your GitHub information or list your repos easily in Kirby.
+With that plugin you can implement a users GitHub information or list your repos easily in Kirby.
 
 Usage example for repos:
 ========================
