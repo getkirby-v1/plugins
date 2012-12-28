@@ -1,0 +1,35 @@
+Podcast Snippet
+===============
+
+## What is it?
+
+A snippet to publish a podcast.
+
+## Installation 
+
+1. Put the template from `templates/podcast` to your Kirby-installation
+2. Put the `podacst.php` file in your `site/snippets` folder
+3. Create a folder called `podcast` and in it a podcast.txt
+4. Change the categorys and items in templates/podcast` for your sake
+
+## Requirements
+
+**The `podcast.txt` should have the following fields:**
+- `title`
+- `language`
+- `copyright`
+- `subtitle`
+- `summary`
+- `author`
+- `mail`
+
+**The items should have the following fields:**
+- `title
+- `subtitle
+- `shownotes
+- `date
+- `duration
+- `keywords
+
+If you put an image into the directory of your `podcast.txt`, it will be used as cover.
+If you put an image into an items directory, it will be used as item-cover, otherwise the main cover will be used.

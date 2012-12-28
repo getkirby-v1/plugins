@@ -1,0 +1,9 @@
+# Podcast Template 1.0
+
+## What is it?
+
+This is used in connection with the podasct snippet to setup a podcast for any part of your site
+
+## Installation
+
+For installtion read the instructions in `snippets/podcast`.

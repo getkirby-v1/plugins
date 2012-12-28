@@ -1,0 +1,9 @@
+{
+    "name": "podasct",
+    "readable": "Podcast",
+    "version": "1.0",
+    "stable": false,
+    "description": "Setup a podcast for your site",
+    "author": "Arne Bahlo",
+    "url": "https://arne.me/"
+}
