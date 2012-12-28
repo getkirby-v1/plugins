@@ -32,4 +32,5 @@ A snippet to publish a podcast.
 - `keywords
 
 If you put an image into the directory of your `podcast.txt`, it will be used as cover.
+
 If you put an image into an items directory, it will be used as item-cover, otherwise the main cover will be used.
