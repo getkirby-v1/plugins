@@ -1,6 +1,6 @@
 {
     "name": "readingtime",
-    "readable": "Reading Time"
+    "readable": "Reading Time",
     "version": "1.0",
     "stable": true,
     "description": "Estimate the reading time for your content",
