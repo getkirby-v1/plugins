@@ -1,8 +1,0 @@
-# Changelog
-
-## v1.1
-+ Added the descriptionExcerpt option.
-* Fixed some bugs
-
-## v1.0
-+ Initial release
