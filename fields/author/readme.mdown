@@ -10,8 +10,9 @@ If not already exists, add a fields folder to your `site/panel` folder and copy 
 
 	site
 		panel
-			author
-				author.php
+			fields
+				author
+					author.php
 
 ## In your blueprints
 
