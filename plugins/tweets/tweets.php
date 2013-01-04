@@ -5,6 +5,7 @@ function tweets($username, $params=array()) {
   $defaults = array(
     'limit'   => 10,
     'cache'   => true,
+    'hiderep' => false, //Parameter to hide replies in your feed - for accounts with high reply volumes
     'refresh' => 60*20 // refresh every 20 minutes
   );
   
@@ -34,7 +35,7 @@ function tweets($username, $params=array()) {
   
   if(!empty($cache)) return $cache;
 
-  $url  = 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=' . $options['username'] . '&count=' . $options['limit'] . '&include_rts=true';
+  $url  = 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=' . $options['username'] . '&count=' . $options['limit'] . '&include_rts=true' . '&exclude_replies=' . $options['hiderep'];
   $json = @file_get_contents($url);
   $data = str::parse($json);  
 
