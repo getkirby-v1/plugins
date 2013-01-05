@@ -6,17 +6,35 @@
  */
 class github {
     // Constructor
-    function __construct($username = null, $count = 0) {
+    function __construct($username = null, $count = 0, $cache = true) {
         if(is_null($username)) return false;
         $this->username = $username;
         $this->count = $count;
     }
 
+    // Caching
+    if($cache) dir::make(c::get('root.cache') . '/github');   
+
     // Get repos and sort them
     public function repos($sorted = false) {
         if($this->count <= 0) return false;
         $url = 'https://api.github.com/users/' . $this->username . '/repos';
-        $data = $this->get_data($url);
+
+        // Caching 
+        $repos_cache_id   = 'github/repos.' . md5($this->username) . '.' . $count . '.php';
+        $repos_cache_data = false;
+        
+        // Try to fetch data from cache
+        if($cache) {
+            $repos_cache_data = (cache::modified($repos_cache_id) < time()-$refresh) ? false : cache::get($repos_cache_id);
+        }
+        
+        if(empty($repos_cache_data)) {
+            $data = $this->get_data($url);
+            if($cache) cache::set($repos_cache_id, $data);
+        } else {
+            $data = $shots_cache_data; 
+        }
 
         $this->repos = array();
 

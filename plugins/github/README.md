@@ -7,7 +7,7 @@ Usage example for repos:
 ========================
 ```php
 <?php
-$github = new github('abahlo', 10);
+$github = new github('abahlo', 10, true);
 
 foreach($github->repos() as $repo):
 ?>
