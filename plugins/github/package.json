@@ -1,0 +1,9 @@
+{
+    "name": "github",
+    "readable": "GitHub",
+    "version": "1.0",
+    "stable": true,
+    "description": "Fetch GitHub user or repo",
+    "author": "Arne Bahlo",
+    "url": "http://arne.me"
+}
