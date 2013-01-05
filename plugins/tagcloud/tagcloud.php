@@ -31,6 +31,7 @@ function tagcloud($parent, $options=array()) {
   }
 
   $cloud = array();
+  $ds    = DIRECTORY_SEPARATOR == '/' ? ':' : ';';
   
   foreach($children as $p) {
   
@@ -44,7 +45,7 @@ function tagcloud($parent, $options=array()) {
         $cloud[$t] = new obj(array(
           'results'  => 1,
           'name'     => $t,
-          'url'      => $options['baseurl'] . '/' . $options['param'] . ':' . $t, 
+          'url'      => $options['baseurl'] . '/' . $options['param'] . $ds . $t, 
           'isActive' => (param($options['param']) == $t) ? true : false,
         ));
       }
