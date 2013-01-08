@@ -216,7 +216,7 @@ class dribbble {
 
             // Load data & close connection
             $data = curl_exec($handler);
-            curl_close($ch);  
+            curl_close($handler);  
         
             return $data;
         }
