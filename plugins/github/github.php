@@ -1,19 +1,24 @@
 <?php
 /*
- * With that plugin you can implement your GitHub information or list your repos easily in Kirby.
+ * With that plugin you can implement your GitHub user information or list your repos easily in Kirby.
  * Copyright (c) 2012 by Arne Bahlo
  *
  */
 class github {
     // Constructor
-    function __construct($username = null, $count = 0, $cache = true) {
-        if(is_null($username)) return false;
+    function __construct($username = null, $count = 0, $cache = true, $refresh = 1800) {
+        if(is_null($username) || $count <= 0) return false;
         $this->username = $username;
         $this->count = $count;
-    }
+        $this->cache = $cache;
+        $this->refresh = $refresh;
 
-    // Caching
-    if($cache) dir::make(c::get('root.cache') . '/github');   
+        // Caching
+        if($this->cache) dir::make(c::get('root.cache') . '/github');   
+        if(!is_dir(c::get('root.cache') . '/github') || !is_writable(c::get('root.cache') . '/github')) {
+            $this->cache = false;
+        }
+    }
 
     // Get repos and sort them
     public function repos($sorted = false) {
@@ -21,20 +26,22 @@ class github {
         $url = 'https://api.github.com/users/' . $this->username . '/repos';
 
         // Caching 
-        $repos_cache_id   = 'github/repos.' . md5($this->username) . '.' . $count . '.php';
-        $repos_cache_data = false;
+        $reposCacheId = 'github/repos.' . md5($this->username) . '.' . $this->count . '.php';
+        $reposCacheData = false;
         
         // Try to fetch data from cache
-        if($cache) {
-            $repos_cache_data = (cache::modified($repos_cache_id) < time()-$refresh) ? false : cache::get($repos_cache_id);
+        if($this->cache) {
+            $reposCacheData = (cache::modified($reposCacheId) < time() - $this->refresh) ? false : cache::get($reposCacheId);
         }
         
-        if(empty($repos_cache_data)) {
+        if(empty($reposCacheData)) {
             $data = $this->get_data($url);
-            if($cache) cache::set($repos_cache_id, $data);
+            if($this->cache) cache::set($reposCacheId, $data);
         } else {
-            $data = $shots_cache_data; 
+            $data = $reposCacheData; 
         }
+
+        $data = json_decode($data);
 
         $this->repos = array();
 
@@ -65,7 +72,24 @@ class github {
     // Get user
     public function user() {
         $url = 'https://api.github.com/users/' . $this->username;
-        $data = $this->get_data($url);
+
+        // Caching 
+        $userCacheId = 'github/user.' . md5($this->username) . '.' . $this->count . '.php';
+        $userCacheData = false;
+        
+        // Try to fetch data from cache
+        if($this->cache) {
+            $userCacheData = (cache::modified($userCacheId) < time()-$this->refresh) ? false : cache::get($userCacheId);
+        }
+        
+        if(empty($userCacheData)) {
+            $data = $this->get_data($url);
+            if($this->cache) cache::set($userCacheId, $data);
+        } else {
+            $data = $userCacheData; 
+        }
+
+        $data = json_decode($data);
 
         $this->user = new stdClass;
 
@@ -92,7 +116,7 @@ class github {
         $data = curl_exec($handler);
         curl_close($handler);
 
-        return json_decode($data);
+        return $data;
     }
 }
 
