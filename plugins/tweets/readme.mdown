@@ -26,7 +26,7 @@ You can add it to your templates like this:
           <strong><?php echo $tweet->user()->name() ?></strong>
           <small>@<?php echo $tweet->user()->username() ?></small>
         </a>    
-        <p><?php echo html($tweet->text()) ?></p>
+        <p><?php echo $tweet->text(true) ?></p>
         <a class="date" href="<?php echo $tweet->url() ?>"><?php echo $tweet->date('h:i A - d M y') ?></a>
       </li>
       <?php endforeach ?>
@@ -53,6 +53,10 @@ Sets the number of returned tweets.
 ### cache (default: true)
 
 Disable or enable the cache. Caching the results is highly recommended. Otherwise the plugin will be super slow. You must make sure that `site/cache` is writable (change permissions to 0755) You must also set c::set('cache', true); in site/config/config.php to enable the cache. 
+
+### hiderep (default: false)
+
+Show or hide replies you've tweeted, e.g. for users with a large number of replies that aren't interesting for the general public. 
 
 ### refresh (default: 20 minutes)
 
