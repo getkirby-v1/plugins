@@ -3,10 +3,10 @@
 This plugin helps you render and submit a simple contact form with name, email and text
 
 ## Installation
-Put the `contactform` folder in your `site/plugins` folder. If this folder doesn't exist yet, create it.
+Put the `contactform` folder in your `site/plugins` folder. If the `site/plugins` folder doesn't exist yet, create it.
 
 ### Installing snippets
-Copy the snippets from `snippets/contactform` in this repo and add them to `site/snippets`
+Copy the snippets from `snippets/contactform` in this repo and add them to `site/snippets`, don't create a subfolder in `site/snippets`.
 
 ### Add the contact form
 
