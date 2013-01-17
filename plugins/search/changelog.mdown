@@ -1,8 +1,7 @@
 # Changelog
 
 ## v1.0
-
 + added include option with "all", "visible" and "invisible" modes. 
 
 ## v0.9
-* Initial release
++ Initial release

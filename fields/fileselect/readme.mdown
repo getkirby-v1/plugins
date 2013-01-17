@@ -10,9 +10,10 @@ If not already exists, add a fields folder to your `site/panel` folder and copy 
 
 	site
 		panel
-			fileselect
-				fileselect.css
-				fileselect.php
+			fields
+				fileselect
+					fileselect.css
+					fileselect.php
 
 ## In your blueprints
 
