@@ -10,10 +10,11 @@ If not already exists, add a fields folder to your `site/panel` folder and copy 
 
 	site
 		panel
-			tags
-				tags.css
-				tags.js
-				tags.php
+			fields
+				tags
+					tags.css
+					tags.js
+					tags.php
 
 ## In your blueprints
 
