@@ -30,8 +30,8 @@ function readingtime($content, $params=array()) {
 
   $minutesCount = floor($words / 200);
   $secondsCount = floor($words % 200 / (200 / 60));
-  $minutesLabel = ($minutesCount == 1) ? $options['minute'] : $options['minutes'];
-  $secondsLabel = ($secondsCount == 1) ? $options['second'] : $options['seconds'];
+  $minutesLabel = ($minutesCount <= 1) ? $options['minute'] : $options['minutes'];
+  $secondsLabel = ($secondsCount <= 1) ? $options['second'] : $options['seconds'];
 
   $replace  = array(
     'minutesCount' => $minutesCount,
