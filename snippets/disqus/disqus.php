@@ -7,7 +7,7 @@ if(!isset($disqus_developer))  $disqus_developer = false;
 if(!isset($disqus_identifier)) $disqus_identifier = $page->uri();
 if(!isset($disqus_url))        $disqus_url = thisURL();
 
-// sanatize the developer setting
+$disqus_title     = addcslashes($disqus_title, "'");
 $disqus_developer = ($disqus_developer) ? 'true' : 'false';
 
 ?>
