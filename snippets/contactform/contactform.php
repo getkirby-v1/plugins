@@ -34,7 +34,7 @@ $form = new contactform(array(
       </div>
   
       <div class="contactform-field<?php if($form->isError('email')) echo ' error' ?>">
-        <label class="contactform-label" for="contactform-email">Email adresse <?php if($form->isRequired('email')) echo '*' ?> <?php if($form->isError('email')): ?><small>Please enter a valid email address</small><?php endif ?></label>
+        <label class="contactform-label" for="contactform-email">Email address <?php if($form->isRequired('email')) echo '*' ?> <?php if($form->isError('email')): ?><small>Please enter a valid email address</small><?php endif ?></label>
         <input class="contactform-input" type="text" id="contactform-email" name="email" value="<?php echo $form->htmlValue('email') ?>" />
       </div>
   
