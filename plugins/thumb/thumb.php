@@ -24,6 +24,7 @@ class thumb {
   var $quality = 100;
   var $alt = false;
   var $crop = false;
+  var $grayscale = false;
 
   function __construct($image, $options=array()) {
 
@@ -48,7 +49,10 @@ class thumb {
 
     // set the quality
     $this->crop = @$options['crop'];
-
+    
+    // set the quality
+    $this->grayscale = @$options['grayscale'];
+	
     // set the quality
     $this->quality = a::get($options, 'quality', c::get('thumb.quality', 100));
 
@@ -87,6 +91,7 @@ class thumb {
     $options .= ($this->maxHeight) ? '.' . $this->maxHeight : '.' . 0;
     $options .= ($this->upscale)   ? '.' . $this->upscale   : '.' . 0;
     $options .= ($this->crop)      ? '.' . $this->crop      : '.' . 0;
+    $options .= ($this->grayscale) ? '.' . $this->grayscale : '.' . 0;
     $options .= '.' . $this->quality;
 
     return md5($this->source) . $options . '.' . $this->obj->extension;
@@ -246,6 +251,10 @@ class thumb {
       imagefill($thumb, 0, 0, $color);
       imagecopyresampled($thumb, $image, 0, 0, 0, 0, $this->width, $this->height, $this->sourceWidth, $this->sourceHeight); 
     }    
+
+	if($this->grayscale == true) {
+		imagefilter($thumb, IMG_FILTER_GRAYSCALE);
+	}
     
     switch($this->mime) {
       case 'image/jpeg': imagejpeg($thumb, $file, $this->quality); break;
