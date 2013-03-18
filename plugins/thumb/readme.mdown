@@ -15,11 +15,12 @@ Put the thumb.php file in your site/plugins folder. Add the plugins folder if it
 or a more extended version:
 
     thumb($image, array(
-      'width'   => 200,
-      'height'  => 200,
-      'quality' => 90,
-      'upscale' => true,
-      'crop'    => true,
+      'width'     => 200,
+      'height'    => 200,
+      'quality'   => 90,
+      'upscale'   => true,
+      'crop'      => true,
+      'grayscale' => true
     ));
 
 ## Available options
@@ -43,6 +44,10 @@ If this is set to true, images will be upscaled to the maximum height or width.
 ### crop
 
 Set this to true to crop the image to the given width and height. Upscale is true by default in this case.
+
+### grayscale
+
+If set to true RGB images will be converted to grayscale
 
 ## Available settings
 
