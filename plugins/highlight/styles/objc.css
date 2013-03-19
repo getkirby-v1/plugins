@@ -1,0 +1,26 @@
+.objc .de1, .objc .de2 {margin:0; padding:0; background:none; vertical-align:top;}
+.objc .imp {font-weight: bold; color: red;}
+.objc li, .objc .li1 {font-weight: normal; vertical-align:top;}
+.objc .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.objc .li2 {font-weight: bold; vertical-align:top;}
+.objc .kw1 {color: #a61390;}
+.objc .kw2 {color: #a61390;}
+.objc .kw3 {color: #a61390;}
+.objc .kw4 {color: #a61390;}
+.objc .kw5 {color: #400080;}
+.objc .kw6 {color: #2a6f76;}
+.objc .kw7 {color: #400080;}
+.objc .kw8 {color: #2a6f76;}
+.objc .kw9 {color: #400080;}
+.objc .co1 {color: #6e371a;}
+.objc .co2 {color: #11740a; font-style: italic;}
+.objc .co3 {color: #bf1d1a;}
+.objc .coMULTI {color: #11740a; font-style: italic;}
+.objc .es0 {color: #2400d9;}
+.objc .br0 {color: #002200;}
+.objc .sy0 {color: #002200;}
+.objc .st0 {color: #bf1d1a;}
+.objc .nu0 {color: #2400d9;}
+.objc .ln-xtra, .objc li.ln-xtra, .objc div.ln-xtra {background-color: #ffc;}
+.objc span.xtra { display:block; }
+
