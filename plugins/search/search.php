@@ -146,9 +146,9 @@ class search {
       
       // add all matched pages to the result set  
       if($matchedTotal) {            
-        $result[$page->uid] = $page;      
-        $result[$page->uid]->searchHits  = $matchedTotal;
-        $result[$page->uid]->searchScore = $score;
+        $result[$page->uri] = $page;      
+        $result[$page->uri]->searchHits  = $matchedTotal;
+        $result[$page->uri]->searchScore = $score;
       }
                 
     }  
