@@ -1,4 +1,9 @@
 # Changelog
 
+## v1.2
+
+- grayscale mode
+- timestamp is attached to thumbnail files
+
 ## v1.1
 + Initial release

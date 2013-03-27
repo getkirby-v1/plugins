@@ -103,7 +103,7 @@ class thumb {
   }
 
   function url() {
-    return (error($this->status)) ? $this->obj->url() : $this->url . '/' . $this->filename();
+    return (error($this->status)) ? $this->obj->url() : $this->url . '/' . $this->filename() . '?' . filemtime($this->file());
   }
   
   function size() {
