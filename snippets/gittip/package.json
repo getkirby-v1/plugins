@@ -1,0 +1,9 @@
+{
+    "name": "gittip",
+    "readable": "Gittip Snippet",
+    "version": "1.0",
+    "stable": true,
+    "description": "Embed your Gittip donate button.",
+    "author": "Corey Edwards",
+    "url": "http://www.cedwardsmedia.com"
+}
