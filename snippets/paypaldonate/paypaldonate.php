@@ -1,4 +1,4 @@
-<?
+<?php
 
 /*
  * This snippet allows you to embed a PayPal Donate button
