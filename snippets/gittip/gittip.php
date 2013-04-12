@@ -1,4 +1,15 @@
 <?php
+
+/*
+ * This snippet allows you to embed a Gittip donate button
+ * in your Kirby-based website.
+ *
+ * Usage:
+ * <?php snippet('gittip', array('user_id' => 'your_user_id')) ?>
+ * 
+ * written by @cedwardsmedia  -  www.cedwardsmedia.com
+*/
+
 $err_state = error_reporting();
 error_reporting(0); // Turn off errors for this script.
 
