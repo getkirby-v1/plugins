@@ -17,8 +17,8 @@ $files = $files->sortBy($sort, $direction);
 // when excluding files, the UL will still be returned if there are no files to show
 foreach($files as $file):
   if(in_array($file->extension(),$exclude)):
-		unset($files->_[$file->filename]);
-	endif;
+    unset($files->_[$file->filename]);
+  endif;
 endforeach;
 
 if(count($files->_)>0): 
