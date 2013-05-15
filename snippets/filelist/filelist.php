@@ -15,10 +15,10 @@ if(isset($extension)) $files = $files->findByExtension($extension);
 $files = $files->sortBy($sort, $direction);
 
 // when excluding files, the UL will still be returned if there are no files to show
-foreach($files as $file):
+foreach($files->_ as $file):
   if(in_array($file->extension(),$exclude)):
-    unset($files->_[$file->filename]);
-  endif;
+		unset($files->_[$file->filename]);
+	endif;
 endforeach;
 
 if(count($files->_)>0): 
@@ -29,5 +29,4 @@ if(count($files->_)>0):
   <li><a href="<?php echo $file->url() ?>"><?php echo html($file->filename()) ?></a></li>    
   <?php endforeach; ?>
 </ul>
-
 <?php endif; ?>
