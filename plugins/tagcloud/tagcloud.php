@@ -25,6 +25,9 @@ function tagcloud($parent, $options=array()) {
     case 'visible':
       $children = $parent->children()->visible();
       break;
+	case 'files':
+	  $children = $parent->files();
+	  break; 	
     default:
       $children = $parent->children();
       break;
