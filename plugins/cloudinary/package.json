@@ -1,0 +1,9 @@
+{
+    "name": "cloudinary",
+    "readable": "Cloudinary",
+    "version": "1.0",
+    "stable": true,
+    "description": "Cache and distribute images using the cloudinary.com image service",
+    "author": "Alexander Ruiz",
+    "url": "http://getkirby.com/"
+}
