@@ -225,10 +225,16 @@ class email {
       'ReplyToAddresses.member.1' => $this->options['replyto'],
       'ReturnPath' => $this->options['replyto'],
       'Source' => $this->options['from'],
-      'Message.Subject.Data' => $this->options['subject'],
-      'Message.Body.Text.Data' => $this->options['body']
+      'Message.Subject.Data' => $this->options['subject']
     );
-
+	
+	if ($this->options['body']) {
+		$setup['Message.Body.Text.Data'] = $this->options['body'];
+	} else if ($this->options['htmlBody']) {
+		$setup['Message.Body.Html.Charset'] = 'UTF-8';
+		$setup['Message.Body.Html.Data'] = $this->options['htmlBody'];
+	}
+	
     $params = array();
 
 		foreach($setup as $key => $value) {

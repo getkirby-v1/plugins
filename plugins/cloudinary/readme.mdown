@@ -1,0 +1,103 @@
+# Cloudinary Plugin
+
+## What is it?
+
+It can be used for upload and manipulate images on the cloud using the [Cloudinary][1] service. 
+
+Crops, creates thumbnails, creates sprites sheets, rotates, detects faces, apply effects and much more very easily. All images are stored in cloudinary. Automatic image optimization and caching with world-wide CDN-based delivery.
+
+If the plugin is deactivated the [thumb][2] pluging is used as fallback
+ 
+## What is cloudinary?
+Cloudinary is an end-to-end image management solution for your Web and mobile applications. Learn more: [Cloudinary][1]
+
+## Dependencies
+1. Cloudinary [PHP Library][3].
+2. The current kirby [thumb][2] pluging.
+
+## Installation 
+
+1. Download the [cloudinary PHP Library][3].
+2. Copy the `src` to your `site/plugins` forder, rename it as `cloudinary`.
+3. Copy the `image.php` file to your `site/plugins` folder.
+4. Go to your `site/config/config.example.com.php` and add the following rules: 
+
+		c::set('cloudinary.support', true); // set to false for you localhost config file
+		c::set('cloudinary.cloudName', 'your_cloud_name');
+		c::set('cloudinary.apiKey', 'your_api_key');
+		c::set('cloudinary.apiSecret', 'your_api_secret');
+	
+	You need to create an account in cloudinary.com to get the API data
+
+## How to use it?
+
+You can use it in your templates, snippets or plugins like this:
+
+    <?php 
+    
+    $image = $page->images()->first();
+    $options = array(
+    	'width' => 200, 
+    	'height' => 200, 
+    	'crop' => true
+    );
+    
+    $url = imageURL($image->url(), $options);
+    echo $url; // http://res.cloudinary.com/YOUR_CLOUD_NAME/image/fetch/c_fill,h_200,w_200/http://yourkirbysite.com/a-page/a-image.jpg -> Cached image URL
+    
+    ?>
+
+Or inline
+
+    <?php     
+    
+    $url = imageURL($page->images()->first()->url(), array('width' => 200, 'height' => 200, 'crop' => true));
+    
+    ?>
+
+Put the returned `$url` in your image tag
+
+	<img src="<?php echo $url ?>">
+
+## Available Params
+
+You can set a lot of params to the imageURL function. 
+
+### width
+
+The desired width
+
+	'width' => '200'
+
+### height
+
+The desired height
+
+	'height' => '200'
+
+If you don't pass this params, a image with a proportional height is returned
+
+### crop
+
+The crop mode
+
+	'crop' => true/false
+
+or 
+
+	'crop' => 'fit/fill'
+
+### More params
+
+To see more image transformations/effects options see the [cloudnary documentation][4].
+
+## Author
+
+Alexander Ruiz
+[@fenixkim][5]
+
+[1]:https://cloudinary.com
+[2]:https://github.com/bastianallgeier/kirbycms-extensions/tree/master/plugins/thumb
+[3]:https://github.com/cloudinary/cloudinary_php
+[4]:https://cloudinary.com/documentation
+[5]:http://twitter.com/fenixkim
