@@ -3,12 +3,15 @@
 function flickrbadge($params=array()) {
 
   $defaults = array(
-    'key'      => false,
-    'username' => false,
-    'limit'    => 10,
-    'format'   => 'square', // square, thumbnail, small, medium, medium_640, large, original
-    'cache'    => true,
-    'refresh'  => 60*60*2 // refresh every two hours
+    'key'         => false,
+    'username'    => false,
+    'limit'       => 10,
+    'format'      => 'square', // square, thumbnail, small, medium, medium_640, large, original
+    'cache'       => true,
+    'refresh'     => 60*60*2, // refresh every two hours
+    'requestType' => 'user', // user, set, favorites, gallery
+    'set'         => false, // id of your set
+    'gallery'     => false // your gallery-url
   );
 
   $options = array_merge($defaults, $params);
@@ -59,7 +62,24 @@ function flickrbadge($params=array()) {
       
   }
 
-  $photos = $flickr->people_getPublicPhotos($user['id'], NULL, NULL, $options['limit']);
+  switch($options['requestType']) {
+    case 'set':       if(!$options['set']) return false;
+                      $photoset = $flickr->photosets_getPhotos($options['set'], NULL, NULL, $options['limit']);
+                      $photos['photos'] = $photoset['photoset'];
+                      break;
+
+    case 'gallery':   if(!$options['gallery']) return false;
+                      $galleryInfo = $flickr->urls_lookupGallery($options['gallery']); // get the gallery-id
+                      $photos = $flickr->galleries_getPhotos($galleryInfo['gallery']['id'], NULL, $options['limit']);
+                      break;
+
+    case 'favorites': $photos = $flickr->favorites_getPublicList($user['id'], NULL, NULL, NULL, NULL, $options['limit']);
+                      break;
+
+    default:          $photos = $flickr->people_getPublicPhotos($user['id'], NULL, NULL, $options['limit']);
+                      break;
+  }
+
   $result = array();
    
   foreach($photos['photos']['photo'] as $photo) {
