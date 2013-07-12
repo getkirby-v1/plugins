@@ -77,10 +77,10 @@ Set the cache expiry in seconds. By default it will be set to two hours. After t
 ### requestType (default: user)
 
 Set the type of request you want to perform.
-user: get your latest images
-set: get latest images of a set
-favorites: get your latest favorites
-gallery: get latest images of a certain gallery
+- user: get your latest images
+- set: get latest images of a set
+- favorites: get your latest favorites
+- gallery: get latest images of a certain gallery
 
 ### set
 
