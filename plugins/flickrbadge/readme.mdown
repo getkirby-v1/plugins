@@ -74,6 +74,23 @@ Disable or enable the cache. Caching the results is highly recommended. Otherwis
 
 Set the cache expiry in seconds. By default it will be set to two hours. After two hours the badge will try to fetch fresh data from the API. Photo and user information will be kept forever unless you delete the cache files manually. This will speed up the update process. 
 
+### requestType (default: user)
+
+Set the type of request you want to perform.
+user: get your latest images
+set: get latest images of a set
+favorites: get your latest favorites
+gallery: get latest images of a certain gallery
+
+### set
+
+Set the ID of a set (required for requestType set)
+
+### gallery
+
+Set the URL of a gallery (required for requestType gallery)
+
+
 ## Available variables for $picture objects
 
 When looping through the result array you can use the following variables:
