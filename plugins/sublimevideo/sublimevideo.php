@@ -92,10 +92,12 @@ class kirbytextExtended extends kirbytext {
     
     $html = '<video class="sublime' . $class . '"' . $poster . ' width="' . $width . '" height="' . $height . '" data-uid="' . $uid . '" data-name="' . $name . '" preload="none">'; 
     foreach($videos as $video) {
+      // fetch video MIME-type to set it as type in the source
+      $mimetype = $video->mime();
       // check for hd quality 
       $hd = ($video->hd()) ? ' data-quality="hd"' : '';
       // generate the source tag for each video
-      $html .= '<source src="' . $video->url() . '"' . $hd . ' />';
+      $html .= '<source src="' . $video->url() . '"' . ' type="' .$mimetype . '"' . $hd . ' />';
     }
     $html .= '</video>';
         
