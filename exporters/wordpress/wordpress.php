@@ -56,7 +56,6 @@ $dateformat = 'Y-m-d H:i';
 
 
 
-
 // DON'T TOUCH THE LINES BELOW
 // ===========================
 
@@ -109,12 +108,13 @@ foreach($response as $post) {
   if($post['post_status'] != 'publish') continue;
         
   $posts[] = array(
-    'title' => $post['title'],
-    'text'  => $post['description'],
-    'date'  => $post['date_created_gmt']->getTimestamp(),
-    'slug'  => $post['wp_slug'],
-    'tags'  => $post['mt_keywords'],
-    'cats'  => implode(',', $post['categories'])
+    'title' 	=> $post['title'],
+    'text'  	=> $post['description'],
+	'moretxt'	=> $post['mt_text_more'],
+    'date'  	=> $post['date_created_gmt']->getTimestamp(),
+    'slug'  	=> $post['wp_slug'],
+    'tags'  	=> $post['mt_keywords'],
+    'cats'  	=> implode(',', $post['categories'])
   );
   
 }
@@ -146,7 +146,7 @@ foreach(array_reverse($posts) as $post) {
 
   $output[] = 'title: ' . $post['title'];  
   $output[] = 'date: ' . date($dateformat, $post['date']);
-  $output[] = 'text: ' . "\n\n" . trim($post['text']);
+  $output[] = 'text: ' . "\n\n" . trim(strip_tags($post['text'])) . trim(strip_tags($post['moretxt']));
   $output[] = 'tags: ' . $post['tags'];
   $output[] = 'categories: ' . $post['cats'];
 
