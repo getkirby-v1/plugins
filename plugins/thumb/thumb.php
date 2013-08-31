@@ -26,6 +26,7 @@ class thumb {
   var $crop = false;
   var $grayscale = false;
   var $datauri = false;
+  var $progressive = false;
 
   function __construct($image, $options=array()) {
 
@@ -53,6 +54,9 @@ class thumb {
     
     // set greyscale on/off
     $this->grayscale = @$options['grayscale'];
+    
+    // set progressive jpegs on/off
+    $this->progressive = @$options['progressive'];
 	
     // set the quality
     $this->quality = a::get($options, 'quality', c::get('thumb.quality', 100));
@@ -263,7 +267,11 @@ class thumb {
 	if($this->grayscale == true) {
 		imagefilter($thumb, IMG_FILTER_GRAYSCALE);
 	}
-    
+
+    if($this->mime == 'image/jpeg') {
+      imageinterlace($thumb, $this->progressive);
+    }
+
     switch($this->mime) {
       case 'image/jpeg': imagejpeg($thumb, $file, $this->quality); break;
       case 'image/png' : imagepng($thumb, $file, 0); break; 
