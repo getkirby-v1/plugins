@@ -70,7 +70,7 @@ class github {
 
         curl_setopt($handler, CURLOPT_URL, $url);
         curl_setopt($handler, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($handler, CURLOPT_USERAGENT, $this->username);
+        curl_setopt($handler, CURLOPT_USERAGENT, $this->username);
 
         $data = curl_exec($handler);
         curl_close($handler);
