@@ -11,16 +11,23 @@ $separator = (isset($separator)) ? $separator : ',';
 // field to fetch existing tags from
 $field = (isset($field)) ? $field : $name;
 
+// field to fetch existing tags from (since by default there was none, but you might want
+// to establish a default in your site config via c::set(field.tags.index)
+$default_index = trim(c::get('fields.tags.index'));
+$index = (isset($index)) ? $index : ( ( !empty($default_index) ) ? $default_index : '' );
+
 // lowercase all tags
 $lower = (isset($lower)) ? $lower : false;
 
 // use passed data if available or try to fetch data
 if(!isset($data) || !is_array($data)) {
 
-  $data  = array();
-  $store = array();
-  
+	$data  = array();
+	$store = array();
+
   switch($index) {
+	// Need to establish a default otherwise PHP Error 'Notices' can occur (if not suppressed)
+	default:
     case 'template':
       foreach($site->pages()->index() as $p) {
         if($p->template() == $page->template()) $store[] = $p;
@@ -36,7 +43,7 @@ if(!isset($data) || !is_array($data)) {
   
   // get all tags
   foreach($store as $s) {
-    $data = array_merge($data, str::split($s->{$field}, $separator));
+	  $data = array_merge($data, str::split($s->{$field}, $separator));
   }
 
 }
