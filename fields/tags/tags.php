@@ -20,6 +20,8 @@ if(!isset($data) || !is_array($data)) {
   $data  = array();
   $store = array();
   
+  if(!isset($index)) $index = 'siblings';
+  
   switch($index) {
     case 'template':
       foreach($site->pages()->index() as $p) {
