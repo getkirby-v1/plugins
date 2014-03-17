@@ -116,7 +116,7 @@
 
       if(search.length == 0) return false;
 
-      var reg = new RegExp('^' + search, 'i');
+      var reg = new RegExp(search, 'i');
 
       var result = plugin.data.filter(function(str) {
         if(plugin.ignore.indexOf(str) == -1 && str.match(reg)) return str;
