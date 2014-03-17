@@ -112,7 +112,7 @@
       plugin.position();
 
       var counter = 0;
-      var search  = $.trim(search); 
+      var search  = $.trim(search).replace(' ','.*'); 
 
       if(search.length == 0) return false;
 
