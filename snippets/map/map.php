@@ -10,6 +10,7 @@ if(!isset($type))    $type    = 'roadmap'; // roadmap, sattelite, hybrid, terrai
 if(!isset($class))   $class   = 'map';
 if(!isset($zoom))    $zoom    = 15;
 if(!isset($address)) $address = 'Mannheim, Germany';
+if(!isset($addresses)) $addresses = [$address];
 
 ?>
 <?php if(!$instances): ?>
@@ -50,12 +51,13 @@ var kmap = {
     });
 
     geocoder = new google.maps.Geocoder();
-    geocoder.geocode({'address': options.address}, function(results, status) {
-      if(status != google.maps.GeocoderStatus.OK) return;
-      map.setCenter(results[0].geometry.location);
-      new google.maps.Marker({map: map, position: results[0].geometry.location});
-    });
-
+    for (var i = options.addresses.length - 1; i >= 0; i--) {
+      geocoder.geocode({'address': options.addresses[i]}, function(results, status) {
+        if(status != google.maps.GeocoderStatus.OK) return;
+        map.setCenter(results[0].geometry.location);
+        new google.maps.Marker({map: map, position: results[0].geometry.location});
+      });
+    };
   },
 
   load : function(options) {
@@ -71,15 +73,15 @@ var kmap = {
 <?php endif; ?>
 <script type="text/javascript">
 kmap.load({
-  address : '<?php echo $address ?>',
-  zoom    : <?php echo $zoom ?>,
-  element : '<?php echo $id ?>',
-  type    : '<?php echo $type ?>',
-  width   : '<?php echo $width ?>',
-  height  : '<?php echo $height ?>',
-  uclass   : '<?php echo $class ?>'  
+  addresses : <?php echo json_encode($addresses) ?>,
+  zoom      : <?php echo $zoom ?>,
+  element   : '<?php echo $id ?>',
+  type      : '<?php echo $type ?>',
+  width     : '<?php echo $width ?>',
+  height    : '<?php echo $height ?>',
+  uclass    : '<?php echo $class ?>'
 });
 </script>
 <noscript id="<?php echo $id ?>" class="<?php echo $class ?>">
-  <img src="http://maps.google.com/maps/api/staticmap?center=<?php echo urlencode($address) ?>&zoom=<?php echo $zoom ?>&size=<?php echo $width ?>x<?php echo $height ?>&maptype=<?php echo str::lower($type) ?>&markers=color:red|color:red|<?php echo urlencode($address) ?>&sensor=false" width="<?php echo $width ?>" height="<?php echo $height ?>" class="<?php echo $class ?>" alt="<?php echo html($address) ?>" />
+  <img src="http://maps.google.com/maps/api/staticmap?center=<?php echo urlencode($addresses[0]) ?>&zoom=<?php echo $zoom ?>&size=<?php echo $width ?>x<?php echo $height ?>&maptype=<?php echo str::lower($type) ?>&markers=color:red|color:red|<?php echo urlencode($addresses[0]) ?>&sensor=false" width="<?php echo $width ?>" height="<?php echo $height ?>" class="<?php echo $class ?>" alt="<?php echo html($addresses[0]) ?>" />
 </noscript>

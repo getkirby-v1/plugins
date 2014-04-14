@@ -11,25 +11,45 @@ Put the map.php file in your site/snippets folder
 ## How to use it?
 
     <?php snippet('map', array('address' => 'Mannheim, Germany')) ?>
-	
+
 …or with more options…
 
     <?php 
 
-	snippet('map', array(
-		'address' => 'Mannheim, Germany',
-		'zoom'    => 17,
-		'width'   => 300,
-		'height'  => 200
-	));
+    snippet('map', array(
+      'address' => 'Mannheim, Germany',
+      'zoom'    => 17,
+      'width'   => 300,
+      'height'  => 200
+    ));
 
-	?>
-	    
+    ?>
+
 ## Options
 
 ### Address (required)
 
 Set the address for your map like you would on Google Maps. For Example "Mannheim, Germany" or "Timesquare, New York"
+
+### Addresses
+
+Set multiple addresses for your map. This will overwrite the "Adress"-option.
+
+Takes an array. Example:
+
+    <?php 
+    snippet('map', array(
+      'addresses' => array(
+        'Mannheim, Germany',
+        'Gießen, Germany',
+      ),
+      'zoom'      => 17,
+      'width'     => 300,
+      'height'    => 200
+    ));
+    ?>
+
+The Focus will be set to the first item by default.
 
 ### Width (default is 300)
 
