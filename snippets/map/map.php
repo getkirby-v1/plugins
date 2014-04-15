@@ -6,11 +6,11 @@ g::set('kmap.instances', $instances+1);
 if(!isset($id))      $id      = 'map-' . uniqid();
 if(!isset($width))   $width   = 300;
 if(!isset($height))  $height  = 300;
-if(!isset($type))    $type    = 'roadmap'; // roadmap, sattelite, hybrid, terrain 
+if(!isset($type))    $type    = 'roadmap'; // roadmap, sattelite, hybrid, terrain
 if(!isset($class))   $class   = 'map';
 if(!isset($zoom))    $zoom    = 15;
 if(!isset($address)) $address = 'Mannheim, Germany';
-if(!isset($addresses)) $addresses = [$address];
+if(!isset($addresses)) $addresses = array($address);
 
 ?>
 <?php if(!$instances): ?>
@@ -18,12 +18,12 @@ if(!isset($addresses)) $addresses = [$address];
 <script type="text/javascript">
 
 var kmap = {
-  
+
   init : function(options) {
 
     var img = document.getElementById(options.element);
     if(!img) return false;
-    
+
     var elem = document.createElement('div');
     elem.setAttribute('id', options.element);
     elem.setAttribute('class', options.uclass);
@@ -31,7 +31,7 @@ var kmap = {
     elem.style.height = options.height + 'px';
 
     img.parentNode.replaceChild(elem, img);
-        
+
     var geocoder, map;
 
     if(!options.zoom) options.zoom = 12;
@@ -43,7 +43,7 @@ var kmap = {
       case 'ROADMAP': case 'SATELLITE': case 'HYBRID': case 'TERRAIN': break;
       default: options.type = 'ROADMAP';
     }
-            
+
     map = new google.maps.Map(elem, {
       zoom : options.zoom,
       center : new google.maps.LatLng(49.46097, 8.49042),
@@ -67,7 +67,7 @@ var kmap = {
       kmap.init(options);
     };
   }
-    
+
 };
 </script>
 <?php endif; ?>
