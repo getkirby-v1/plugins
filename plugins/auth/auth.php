@@ -110,6 +110,7 @@ class Auth {
 			'allow'    => array(),
 			'deny'     => array(),
 			'logout'   => true,
+			'return'   => false,
 		);
 
 		$options = array_merge($defaults, $params);
@@ -122,7 +123,7 @@ class Auth {
 
 		if(!$user) {
 			if($options['logout']) self::kill();
-			go(url($options['redirect']));
+			if (!$options['return']) go(url($options['redirect']));
 		}
 
 		$allowed = false;
@@ -133,6 +134,10 @@ class Auth {
 		if(empty($options['allow'])) {
 			$allowed = true;
 		} else {
+			if (!$user && $options['return']) {
+				// Allow list contains names and we're not logged in.
+				return false;
+			}
 
 			foreach($options['allow'] as $allow) {
 
@@ -160,38 +165,50 @@ class Auth {
 		}
 
 		// deny loop
+		// if we get here and we're not logged in, we can't be on the deny list.
+		if ($user) {
+			foreach($options['deny'] as $allow) {
 
-		foreach($options['deny'] as $allow) {
-
-			// user 
-			if(preg_match('!^user:!', $allow)) {
-				$username = str_replace('user:', '', $allow);
+				// user 
+				if(preg_match('!^user:!', $allow)) {
+					$username = str_replace('user:', '', $allow);
 				
-				if(str::lower($username) == str::lower($user->username())) {
-					$allowed = false;
-					break;
-				}
+					if(str::lower($username) == str::lower($user->username())) {
+						$allowed = false;
+						break;
+					}
 
-			} else if(preg_match('!^group:!', $allow)) {
-				$group = str_replace('group:', '', $allow);
+				} else if(preg_match('!^group:!', $allow)) {
+					$group = str_replace('group:', '', $allow);
 
-				if($user->group() != '' && str::lower($group) == str::lower($user->group())) {
-					$allowed = false;
-					break;
+					if($user->group() != '' && str::lower($group) == str::lower($user->group())) {
+						$allowed = false;
+						break;
+					}
+
 				}
 
 			}
-
 		}
 
 
 		if(!$allowed) {
 			if($options['logout']) self::kill();
-			go(url($options['redirect']));
+			
+			if ($options['return']) {
+				return false;
+			} else {
+				go(url($options['redirect']));
+			}
 		}
 
 		return true;
 
+	}
+	
+	static public function hasPerm($params = array()) {
+		$params['return'] = true;
+		return self::firewall($params);
 	}
 
 	static protected function load($username) {
