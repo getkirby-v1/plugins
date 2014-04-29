@@ -1,0 +1,9 @@
+{
+    "name": "resrc",
+    "readable": "Resrc.it",
+    "version": "1.0",
+    "stable": true,
+    "description": "Provides a helper for prepending your image urls with http://resrc.it",
+    "author": "Luke Watts",
+    "url": "http://thisis.la/"
+}
