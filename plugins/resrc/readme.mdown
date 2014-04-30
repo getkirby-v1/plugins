@@ -1,0 +1,28 @@
+# Resrc.it
+
+## What is it?
+
+Adds a helper for prepending your image urls with http://resrc.it, these can be configured
+
+## Installation 
+
+Put the resrc.php file in your site/plugins folder. 
+
+## How to use it?
+
+By default it will not prepend your URL's as resrc.it rely on sites being publically accessible, and if you're kicking of development you're probably working on `http://localhost:8888`
+
+Once you're up and running on a real server you just add the following lines to your
+
+```
+c::set('resrc', true);
+c::set('resrc.plan', 'app'); /* app or trial */
+```
+
+## Further reading
+
+Checkout [ReSRC support](http://www.resrc.it/support) for more information about exactly how best to implement it within your template. 
+
+## Author
+Luke Watts
+<http://thisis.la>
