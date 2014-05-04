@@ -148,9 +148,15 @@ class Auth {
 				} else if(preg_match('!^group:!', $allow)) {
 					$group = str_replace('group:', '', $allow);
 
-					if($user->group() != '' && str::lower($group) == str::lower($user->group())) {
-						$allowed = true;
-						break;
+					if ($user->group() != '') {
+						$groups = str::split($user->group());
+						
+						foreach ($groups as $user_group) {
+							if (str::lower($group) == str::lower($user_group)) {
+								$allowed = true;
+								break;
+							}
+						}
 					}
 
 				}
@@ -175,9 +181,15 @@ class Auth {
 			} else if(preg_match('!^group:!', $allow)) {
 				$group = str_replace('group:', '', $allow);
 
-				if($user->group() != '' && str::lower($group) == str::lower($user->group())) {
-					$allowed = false;
-					break;
+				if ($user->group() != '') {
+					$groups = str::split($user->group());
+					
+					foreach ($groups as $user_group) {
+						if (str::lower($group) == str::lower($user_group)) {
+							$allowed = false;
+							break;
+						}
+					}
 				}
 
 			}
