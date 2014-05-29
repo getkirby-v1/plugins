@@ -34,9 +34,9 @@ echo '<?xml version="1.0" encoding="utf-8"?>';
 
       <?php if(isset($descriptionField)): ?>
       <?php if(!$descriptionExcerpt): ?>
-      <description><![CDATA[<?php echo kirbytext($item->{$descriptionField}) ?>]]></description>
+      <description><![CDATA[<?php echo kirbytext($item->{$descriptionField}()) ?>]]></description>
       <?php else: ?>
-      <description><![CDATA[<?php echo excerpt($item->{$descriptionField}, (isset($descriptionLength)) ? $descriptionLength : 140) ?>]]></description>
+      <description><![CDATA[<?php echo excerpt($item->{$descriptionField}(), (isset($descriptionLength)) ? $descriptionLength : 140) ?>]]></description>
       <?php endif ?>
       <?php endif ?>
 
