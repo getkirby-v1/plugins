@@ -20,11 +20,11 @@
 
       plugin.input  = $element;
       plugin.ignore = [];
-      plugin.data   = {};     
+      plugin.data   = {};
       plugin.open   = false;
 
       plugin.load();
-      
+
       plugin.blocker = $('<div class="autocomplete-blocker"></div>').css({'position' : 'fixed', 'top' : 0, 'left' : 0, 'right' : 0, 'bottom' : 0, 'z-index' : 1999}).hide();
       plugin.box     = $('<div class="autocomplete"></div>').css('z-index', 2000);
       plugin.ul      = $('<ul></ul>');
@@ -34,11 +34,11 @@
         plugin.input.focus();
         e.stopPropagation();
       });
-    
+
       $element.keyup(function(e) {
-                
-        plugin.pos = plugin.selection();        
-                
+
+        plugin.pos = plugin.selection();
+
         switch(e.keyCode) {
           case 13: // enter
             plugin.apply();
@@ -53,23 +53,23 @@
             break;
           case 188: // ,
             plugin.apply();
-          default: 
+          default:
             plugin.complete($(this).val());
             break;
         }
 
       });
-      
+
       $element.keydown(function(e) {
 
-        plugin.pos = plugin.selection();        
+        plugin.pos = plugin.selection();
 
         switch(e.keyCode) {
           case 9:  // tab
             if(plugin.value().length > 0) {
-              plugin.apply(); 
+              plugin.apply();
               return false;
-            } else { 
+            } else {
               return true;
             }
             break;
@@ -79,40 +79,40 @@
           case 40: // down
             plugin.next();
             return false;
-        }     
+        }
       });
 
       plugin.box.click(function(e) {
         e.stopPropagation();
       });
-            
+
       $('body').append(plugin.box);
       $('body').append(plugin.blocker);
-    
+
       $(window).resize(plugin.position);
       plugin.position();
 
     }
-  
+
     plugin.load = function() {
 
       if(typeof url == 'object') {
-        plugin.data = url;      
+        plugin.data = url;
       } else {
         $.getJSON(url, function(result) {
           plugin.data = result;
         });
-      }     
+      }
 
     }
 
     plugin.complete = function(search) {
-    
+
       plugin.kill();
       plugin.position();
 
       var counter = 0;
-      var search  = $.trim(search); 
+      var search  = $.trim(search);
 
       if(search.length == 0) return false;
 
@@ -121,78 +121,78 @@
       var result = plugin.data.filter(function(str) {
         if(plugin.ignore.indexOf(str) == -1 && str.match(reg)) return str;
       });
-      
+
       result = result.slice(0,5);
-                                  
+
       $.each(result, function(i, string) {
-                                          
+
         var li = $('<li>' + string + '</li>');
-        
+
         li.click(function() {
           plugin.apply(string)
         });
-        
+
         li.mouseover(function() {
           plugin.ul.find('.selected').removeClass('selected');
-          li.addClass('over');          
+          li.addClass('over');
         });
 
         li.mouseout(function() {
           li.removeClass('over');
         });
-        
+
         plugin.ul.append(li);
 
         if(counter==0) li.addClass('first selected');
         counter++;
-                      
+
       });
-      
+
       if(counter > 0) {
-        plugin.box.append(plugin.ul.show());        
+        plugin.box.append(plugin.ul.show());
         plugin.blocker.show();
         plugin.open = true;
-      }     
+      }
     }
-        
+
     plugin.kill = function() {
       plugin.blocker.hide();
       plugin.ul.empty().hide();
       plugin.open = false;
     }
-    
+
     plugin.apply = function(string) {
       if(!string) {
         var string = plugin.value();
-      } 
+      }
       plugin.settings.apply.call(plugin, string);
     }
-    
+
     plugin.value = function() {
       return plugin.selected().text();
     }
-    
+
     plugin.selected = function() {
       return plugin.ul.find('.selected');
     }
-    
+
     plugin.select = function(element) {
-      plugin.deselect();      
+      plugin.deselect();
       element.addClass('selected');
     }
-    
+
     plugin.deselect = function() {
       plugin.selected().removeClass('selected');
     }
-    
+
     plugin.prev = function() {
       var sel  = plugin.selected();
       var prev = sel.prev();
       if(prev.length > 0) plugin.select(prev);
     }
-    
+
     plugin.next = function() {
-      var sel  = plugin.selected();   
+      var sel  = plugin.selected();
       var next = (sel.length > 0) ? sel.next() : plugin.ul.find('li:first-child');
       if(next.length > 0) plugin.select(next);
     }
@@ -208,18 +208,18 @@
     }
 
     plugin.position = function() {
-      
+
       var pos    = $element.offset();
       var height = $element.innerHeight();
 
       pos.top = pos.top+height+10;
-            
+
       plugin.box.css(pos);
-          
+
     }
-  
+
     plugin.init();
-    
+
   }
 
   $.fn.autocomplete = function(url, options) {
@@ -284,35 +284,35 @@
       plugin.input   = plugin.box.find('input').css('width', 20);
       plugin.bhits   = 0;
       plugin.lhits   = 0;
-            
+
       if(plugin.settings.url) {
 
         var autocompleteDefaults = {
           apply : function(string) {
-            plugin.add(string); 
+            plugin.add(string);
             this.kill();
             plugin.input.focus();
-          }        
+          }
         };
-        
+
         // initialize the autocomplete plugins with a default event
         plugin.input.autocomplete(plugin.settings.url, $.extend({}, autocompleteDefaults, plugin.settings.autocomplete));
-        
-        // store the autocomplete plugin object        
+
+        // store the autocomplete plugin object
         plugin.autocomplete = plugin.input.data('autocomplete');
-        
-        // add autocomplete custom events to the tagbox plugin                
+
+        // add autocomplete custom events to the tagbox plugin
         plugin.settings.onAdd = function(tag) {
           plugin.autocomplete.ignore = plugin.serialize();
         }
         plugin.settings.onRemove = function(tag) {
           plugin.autocomplete.ignore = plugin.serialize();
         }
-      
-      }      
+
+      }
 
       plugin.origin.before(plugin.box);
-    
+
       plugin.measure = $('<div style="display: inline" />').css({
         'font-size'   : plugin.input.css('font-size'),
         'font-family' : plugin.input.css('font-family'),
@@ -323,7 +323,7 @@
       });
 
       $('body').append(plugin.measure);
-                  
+
       plugin.box.click(function(e) {
         plugin.focus();
         plugin.input.focus();
@@ -331,26 +331,26 @@
       });
       plugin.input.keydown(function(e) {
         plugin.val = plugin.input.val();
-        plugin.position = plugin.selection();                                               
+        plugin.position = plugin.selection();
         plugin.settings.keydown.call(plugin, e, plugin.val);
       });
       plugin.input.keyup(function(e) {
         plugin.val = plugin.input.val();
-        plugin.position = plugin.selection();                                               
+        plugin.position = plugin.selection();
         plugin.resize(plugin.val);
         if(plugin.val.match(new RegExp(plugin.settings.separator))) plugin.add(plugin.val);
       });
       plugin.input.focus(function(e) {
         plugin.input.focused = true;
-        plugin.deselect();      
+        plugin.deselect();
         plugin.bhits = 0;
         plugin.focus();
       });
       plugin.input.blur(function(e) {
         plugin.input.focused = false;
-        plugin.bhits = 0;   
-        if(plugin.val.length == 0) plugin.blur();               
-      });       
+        plugin.bhits = 0;
+        if(plugin.val.length == 0) plugin.blur();
+      });
 
       plugin.settings.onReady.call(this);
 
@@ -366,7 +366,7 @@
             }
             if(plugin.val.length == 0) {
               plugin.next();
-              return false;           
+              return false;
             } else if(plugin.position == 0) {
               if(plugin.bhits > 0) {
                 plugin.bhits = 0;
@@ -375,12 +375,12 @@
               }
               plugin.bhits++;
             }
-            break;      
+            break;
           case 37: // left
             if(!plugin.input.focused) return plugin.previous();
             if(plugin.val.length == 0) {
               plugin.next();
-              return false;           
+              return false;
             } else if(plugin.position == 0) {
               if(plugin.lhits > 0) {
                 plugin.lhits = 0;
@@ -392,7 +392,7 @@
             break;
           case 39: // right
             if(!plugin.input.focused) {
-              plugin.next();            
+              plugin.next();
               return false;
             }
             break;
@@ -414,30 +414,30 @@
             }
             break;
         }
-      
+
       }).click(function(e) {
-        if(plugin.val.length > 0) plugin.add(plugin.val);
+        //if(plugin.val.length > 0) plugin.add(plugin.val);
       });
 
       if($val.length > 0) plugin.add($val);
 
     }
-            
+
     plugin.resize = function(value) {
       plugin.measure.text(value);
-      plugin.input.css('width', plugin.measure.width() + 20);   
+      plugin.input.css('width', plugin.measure.width() + 20);
     },
 
     plugin.focus = function(input) {
       if(plugin.focused) return true;
-      
+
       $('.tagboxified').not(plugin.origin).each(function() {
-        if($(this).data('tagbox')) $(this).data('tagbox').blur();  
+        if($(this).data('tagbox')) $(this).data('tagbox').blur();
       });
 
       plugin.box.addClass('focus');
       plugin.focused = true;
-      
+
       if(input == undefined) var input = true;
       if(input !== false) plugin.input.focus();
     }
@@ -446,14 +446,14 @@
       if(!plugin.focused) return true;
       plugin.box.removeClass('focus');
       plugin.focused = false;
-      plugin.input.blur();    
+      plugin.input.blur();
       plugin.deselect();
     }
-        
+
     plugin.tag = function(tag) {
       tag = tag.replace(/,/g,'').replace(/;/g,'');
       if(plugin.settings.lowercase) tag = tag.toLowerCase();
-      return $.trim(tag);   
+      return $.trim(tag);
     }
 
     plugin.serialize = function() {
@@ -473,42 +473,42 @@
       } else if(!tag) {
         return true;
       }
-            
-      if($.isArray(tag) || tag.match(new RegExp(plugin.settings.separator))) {      
+
+      if($.isArray(tag) || tag.match(new RegExp(plugin.settings.separator))) {
         var tags = ($.isArray(tag)) ? tag : tag.split(plugin.settings.separator);
         $.each(tags, function(i,t) {
           plugin.add(t);
-        }); 
+        });
         return true;
-      } 
-        
+      }
+
       var tag = plugin.tag(tag);
-          
+
       if(tag.length < plugin.settings.minLength || tag.length > plugin.settings.maxLength) {
         return plugin.settings.onInvalid.call(plugin, tag, length);
       }
-      
+
       if(plugin.settings.duplicates == false) {
         if($.inArray(tag, plugin.index) > -1) {
           return plugin.settings.onDuplicate.call(plugin, tag);
         }
       }
-      
+
       plugin.index.push(tag);
-      
+
       var li = $('<li><span class="tag"></span><span class="delete">&#215;</span></li>').data('tag', tag);
       li.find('.tag').text(tag);
       li.find('.delete').click(function() { plugin.remove(li) });
-                
+
       li.click(function(e) {
         plugin.blur();
-        e.stopPropagation();          
+        e.stopPropagation();
         plugin.select(li);
       });
       li.focus(function(e) {
         plugin.select(li)
       });
-    
+
       plugin.input.parent().before(li);
       plugin.input.val('');
       plugin.input.css('width', 20);
@@ -516,7 +516,7 @@
       var serialized = plugin.serialize();
       plugin.origin.val(serialized.join(plugin.settings.separator));
       plugin.settings.onAdd.call(plugin, tag, serialized, li);
-                      
+
     }
 
     plugin.select = function(element) {
@@ -526,39 +526,39 @@
         if(!element) return false;
       }
 
-      if(element.length == 0) return false;     
+      if(element.length == 0) return false;
       plugin.input.blur();
       this.deselect();
       element.addClass('selected');
       plugin.focus(false);
     }
-      
+
     plugin.selected = function() {
-      return plugin.box.find('.selected');  
+      return plugin.box.find('.selected');
     }
 
     plugin.deselect = function() {
       var selected = plugin.selected();
-      selected.removeClass('selected'); 
+      selected.removeClass('selected');
     }
 
     plugin.find = function(tag) {
       var element = false;
       plugin.box.find('li').not('.new').each(function() {
         if($(this).data('tag') == tag) element = $(this);
-      });     
+      });
       return element;
     }
 
     plugin.remove = function(element) {
-      
+
       plugin.input.val('');
-      
+
       if(typeof element == 'string') {
         var element = plugin.find(element);
         if(!element) return false;
       }
-      
+
       var selected = plugin.selected();
       if(!element && selected.length > 0) var element = selected.first();
       var previous = plugin.previous(true);
@@ -575,7 +575,7 @@
       var i = plugin.index.indexOf(tag);
       plugin.index.splice(i,1);
     }
-    
+
     plugin.selection = function() {
       var i = plugin.input[0];
       var v = plugin.val;
@@ -585,13 +585,13 @@
       if(r.text == '') return v.length;
       return v.lastIndexOf(r.text);
     }
-    
+
     plugin.previous = function(ret) {
       var sel  = plugin.selected();
       var prev = (sel.length == 0) ? plugin.box.find('li').not('.new').first() : sel.prev().not('.new');
       return (ret) ? prev : plugin.select(prev);
     }
-    
+
     plugin.next = function(ret) {
       var sel  = plugin.selected();
       var next = (sel.length == 0) ? plugin.box.find('li').not('.new').last() : sel.next();
@@ -599,7 +599,7 @@
     }
 
     plugin.init();
-    
+
   }
 
   $.fn.tagbox = function(options) {
@@ -609,7 +609,7 @@
 
         var plugin = new $.tagbox(this, options);
         $(this).data('tagbox', plugin);
-        
+
       }
     });
 
