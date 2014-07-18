@@ -31,10 +31,11 @@ function readlater($content, $tool, $label=false, $params=array()) {
     'rel'    => false,
     'target' => false,
     'class'  => 'readlater ' . $tool,
+    'url'    => url::current(),
   );
 
   $options = array_merge($defaults, $params);
-  $url     = urlencode(url::current());
+  $url     = urlencode($options['url']);
   $title   = urlencode($content);
   $label   = ($options['label'])  ? $options['label'] : $tools[$tool]['label'];
   $rel     = ($options['rel'])    ? ' rel="' . $options['rel'] . '"' : '';
