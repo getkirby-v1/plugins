@@ -6,7 +6,7 @@ This is a custom fileselect field for the Kirby panel, which makes it easy to se
 
 ## Installation
 
-If not already exists, add a fields folder to your `site/panel` folder and copy the entire tags field folder there. Your structure should look like this: 
+If not already exists, add a fields folder to your `site/panel` folder and copy the entire `fileselect` folder there. Your structure should look like this: 
 
 	site
 		panel
