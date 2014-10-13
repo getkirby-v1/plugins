@@ -45,7 +45,7 @@ class Auth {
     
     // store the token in the cookie
     // and the user data in the session    
-    cookie::set('authFrontend', $token, 60*60*24);    		
+    cookie::set('authFrontend', $token, 60*60*24, '/');  		
 		s::set('authFrontend.' . $token, $account->username());
     		
 		go(url($redirect));
@@ -84,7 +84,7 @@ class Auth {
     // overwrite the token      
     $token = str::random();
     // the cookie is valid for 24 hours
-    cookie::set('authFrontend', $token, 60*60*24);
+    cookie::set('authFrontend', $token, 60*60*24, '/');
     
     // restart the session    
     s::restart();
