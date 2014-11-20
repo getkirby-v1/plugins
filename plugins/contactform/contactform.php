@@ -10,7 +10,7 @@ class ContactForm extends Submission {
     $this->defaults();
 
     // set required and wanted fields
-    $this->defaults('required', array('name', 'email', 'text'));
+    $this->defaults('required', array('name', 'email', 'text', 'spam'));
     $this->defaults('keep',     array('name', 'email', 'text'));
         
     // set the default subject
