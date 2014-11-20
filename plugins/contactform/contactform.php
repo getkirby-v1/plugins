@@ -51,7 +51,10 @@ class ContactForm extends Submission {
     // redirect to the "goto" url on success
     $this->defaults('success', function($self) {
       // redirect to callback url
-      go($self->option('goto'));
+      $url = $self->option('goto');
+      if (!empty($url)) {
+        go($self->option('goto'));
+      }
     });
 
     // merge the defaults with the given options

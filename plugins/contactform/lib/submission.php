@@ -96,7 +96,8 @@ class Submission {
       'method'   => 'post',
       'ajax'     => false,
       'required' => array(), 
-      'keep'     => array(), 
+      'keep'     => array(),
+	  'honeypot' => null,
             
       // on request event
       'request'  => function($self) {
@@ -115,7 +116,13 @@ class Submission {
 
         // do some basic sanitizing
         $self->data = $self->input = array_map(array($self, 'sanitize'), $self->input);
-
+		
+		// Check for the honeypot field before removing unwanted input fields
+        if ($self->isSpam()) {
+          // Pretend everything went well, so the bot does not become suspicious
+          return $self->trigger('success');
+        }
+		
         // check for missing fields
         foreach($self->option('required') as $required) {
           if(empty($self->data[$required])) $self->addMissing($required);
@@ -270,6 +277,25 @@ class Submission {
   public function isError($field = false) {
     if($field) return (in_array($field, $this->errors)) ? true : false;
     return $this->error;
+  }
+  
+  /*
+   * Checks if the honeypot field has been filled.
+   *
+   * @return boolean
+   */
+  public function isSpam() {
+    $field = $this->option('honeypot');
+
+    // Spam detection is optional. The honeypot field is only checked if 
+    // a valid field name is specified via the options.
+    if (!empty($field)) {
+      $value = $this->data($field);
+      return !empty($value);
+    }
+
+    // Otherwise always return false
+    return false;
   }
 
   /*

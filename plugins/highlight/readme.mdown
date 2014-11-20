@@ -44,6 +44,13 @@ Whenever you want to add a highlighted code snippet to your content, do it like 
 	
 	```
 
+## Code Block styles
+
+To remove unwanted spacing you should add 
+
+pre {
+	white-space: nowrap
+}
 	    
 ## Author
 Bastian Allgeier
