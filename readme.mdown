@@ -1,5 +1,7 @@
 # Kirby extensions
 
+**This is the repository for old Kirby 1 extensions. Please visit http://getkirby.com/downloads for the latest extensions for Kirby 2**
+
 ## What is Kirby?
 
 Kirby is a file-based cms. Easy to setup, easy to use, flexible as hell. You can find more about it here: <http://getkirby.com>
