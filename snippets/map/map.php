@@ -1,7 +1,7 @@
 <?php
 
-$instances = g::get('kmap.instances');
-g::set('kmap.instances', $instances+1);
+$instances = kirby()->get('kmap.instances');
+kirby()->set('kmap.instances', $instances+1);
 
 if(!isset($id))      $id      = 'map-' . uniqid();
 if(!isset($width))   $width   = 300;
