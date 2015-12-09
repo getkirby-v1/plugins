@@ -49,6 +49,10 @@ Set this to true to crop the image to the given width and height. Upscale is tru
 
 If set to true RGB images will be converted to grayscale
 
+### datauri
+
+If set to true image URLs will be converted to data:URIs
+
 ## Available settings
 
 You can add the following config variables to your config file (site/config/config.php) to adjust the default settings of the thumb plugin:
@@ -57,6 +61,7 @@ You can add the following config variables to your config file (site/config/conf
     c::set('thumb.cache.url',  c::get('url')  . '/thumbs');
     c::set('thumb.quality', 100);
     c::set('thumb.upscale', false);
+    c::set('thumb.datauri', false);
 
 ## Requirements
 

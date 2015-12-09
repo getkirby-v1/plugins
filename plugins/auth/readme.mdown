@@ -6,35 +6,40 @@ The Authentication plugin makes it possible to create user accounts and user gro
 
 ## Installation 
 
-- Copy the auth folder to your site/plugins folder.
-- Copy auth/snippets/login.php to your snippets folder and optionally customize it
-- Create an invisible content/login folder with a login.txt
-- Create a login.php template in site/templates and include the login form snippet. I.e.:
+- Copy the `auth` folder to your `site/plugins` folder.
+- Copy `auth/snippets/login.php` to your `snippets` folder and optionally customize it
+- Create an invisible `content/login` folder with a `login.txt`
+- Create a `login.php` template in `site/templates` and include the login form snippet. I.e.:
 
-    <!-- site/templates/login.php -->
+```
+<!-- site/templates/login.php -->
 
-    <?php snippet('header') ?>
-    <?php snippet('login') ?>
-    <?php snippet('footer') ?>
+<?php snippet('header') ?>
+<?php snippet('login') ?>
+<?php snippet('footer') ?>
+```
 
-- Create an invisible content/logout folder with a logout.txt
-- Crate a logout.php template in site/templates: 
+- Create an invisible `content/logout` folder with a `logout.txt`
+- Crate a `logout.php` template in `site/templates`: 
 
-    <?php Auth::logout() ?>
+```
+<?php Auth::logout() ?>
+```
 
-- Create an site/accounts folder and add your first user account. Use the username as filename (ie. yourusername.php)
+- Create an `site/accounts` folder and add your first user account. Use the username as filename (ie. `yourusername.php`).
 
-    <?php if(!defined('KIRBY')) exit ?>
+```
+<?php if(!defined('KIRBY')) exit ?>
 
-    # setup your account credentials here
-    # it's highly recommended to use md5 or sha1 encryption 
-    # for your passwords. read more about encryption in the
-    # docs: http://getkirby.com/docs/panel/accounts
+# setup your account credentials here
+# it's highly recommended to use md5 or sha1 encryption 
+# for your passwords. read more about encryption in the
+# docs: http://getkirby.com/docs/panel/accounts
 
-    username: yourusername
-    password: yourpassword
-    group:    optional-group-name
-
+username: yourusername
+password: yourpassword
+group:    optional-group-name
+```
 
 Now you have a fully functional login/logout system. 
 
@@ -42,9 +47,11 @@ Now you have a fully functional login/logout system.
 
 ### Full restriction
 
-If you want to restrict access to all your pages, I recommend to add the firewall to your header.php snippet:
+If you want to restrict access to all your pages, I recommend to add the firewall to your `header.php` snippet:
 
-    <?php Auth::firewall() ?>
+```
+<?php Auth::firewall() ?>
+```
 
 This will block access to all pages for all unauthenticated users.
 
