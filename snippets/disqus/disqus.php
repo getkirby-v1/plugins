@@ -11,13 +11,14 @@ $disqus_title     = addcslashes($disqus_title, "'");
 $disqus_developer = ($disqus_developer) ? 'true' : 'false';
 
 ?>
-<div id="disqus_thread"></div>
+<div id="disqus_thread" data-disqusshortname="<?php echo $disqus_shortname ?>" data-disqustitle="<?php echo html($disqus_title) ?>" data-disqusdeveloper="<?php echo $disqus_developer ?>" data-disqusidentifier="<?php echo $disqus_identifier ?>" data-disqusurl="<?php echo $disqus_url ?>"></div>
 <script type="text/javascript">
-  var disqus_shortname  = '<?php echo $disqus_shortname ?>'; // required: replace example with your forum shortname
-  var disqus_title      = '<?php echo html($disqus_title) ?>';
-  var disqus_developer  = '<?php echo $disqus_developer ?>'; // developer mode
-  var disqus_identifier = '<?php echo $disqus_identifier ?>';
-  var disqus_url        = '<?php echo $disqus_url ?>';
+  var disqus = document.getElementById('disqus_thread');
+	var disqus_shortname = disqus.dataset.disqusshortname;
+	var disqus_title = disqus.dataset.disqustitle;
+	var disqus_developer = disqus.dataset.disqusdeveloper;
+	var disqus_identifier = disqus.dataset.disqusidentifier;
+	var disqus_url = disqus.dataset.disqusurl;
 
   (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
