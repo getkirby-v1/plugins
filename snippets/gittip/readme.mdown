@@ -1,0 +1,30 @@
+# Gittip Donate Button 1.0
+
+## What is it?
+
+A snippet which allows you to embed your Gittip donate button.
+
+## Installation 
+
+Put the gittip.php file in your site/snippets folder.
+
+## How to use it?
+
+1. Create a Gittip account.
+2. Add the snippet to your template where you want the button to appear.
+		
+		<?php snippet('gittip', array('user_id' => 'youruserid')) ?>
+	    
+Note: If no user_id is specified, the script will throw a notice.
+
+### Appendix
+I wrote this snippet to simplify my own life and be able to handle these buttons a lot easier. I am, by no means, a professional programmer. With that in mind, I gladly accept any improvements or optimizations. All I ask is that if you improve the snippet, please hit me up on Twitter @cedwardsmedia and let me know so I can benefit from it too. :)
+
+### License
+[![Creative Commons License](http://i.creativecommons.org/l/by-sa/3.0/88x31.png)](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US)
+
+This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US).
+
+## Author
+Corey Edwards
+<http://www.cedwardsmedia.com>

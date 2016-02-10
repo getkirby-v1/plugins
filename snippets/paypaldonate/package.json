@@ -1,0 +1,9 @@
+{
+    "name": "paypaldonate",
+    "readable": "PayPal Donate Button",
+    "version": "1.0",
+    "stable": true,
+    "description": "Embed your PayPal Donate button.",
+    "author": "Corey Edwards",
+    "url": "http://www.cedwardsmedia.com"
+}
