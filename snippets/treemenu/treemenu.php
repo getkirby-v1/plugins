@@ -1,7 +1,7 @@
 <?php if(!isset($subpages)) $subpages = $site->pages() ?>
 <ul>
   <?php foreach($subpages->visible() AS $p): ?>
-  <li class="depth-<?php echo $p->depth() ?>">
+  <li class="depth-<?php echo $p->depth(); echo ($p->isOpen()) ? ' active-trail' : ''; ?>">
     <a<?php echo ($p->isActive()) ? ' class="active"' : '' ?> href="<?php echo $p->url() ?>"><?php echo $p->title() ?></a>
     <?php if($p->hasChildren()): ?>
     <?php snippet('treemenu', array('subpages' => $p->children())) ?>
