@@ -53,6 +53,10 @@ If set to true RGB images will be converted to grayscale
 
 If set to true image URLs will be converted to data:URIs
 
+### progressive
+
+If set to true JPEG thumbs will be progressive.
+
 ## Available settings
 
 You can add the following config variables to your config file (site/config/config.php) to adjust the default settings of the thumb plugin:
