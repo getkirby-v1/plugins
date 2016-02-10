@@ -64,7 +64,14 @@ class thumb {
     $this->datauri = a::get($options, 'datauri', c::get('thumb.datauri', false));
 
     // set the alt text
-    $this->alt = a::get($options, 'alt', $this->obj->name());
+    if(c::get('lang.support')) {
+       $currentLang = c::get('lang.current');
+       $this->alt = (!empty($this->obj->meta[$currentLang]['title'])) ? $this->obj->meta[$currentLang]['title'] : a::get($options, 'alt', $this->obj->name());
+    }
+    else {
+       $defaultLang = c::get('lang.default');
+       $this->alt = (!empty($this->obj->meta[$defaultLang]['title'])) ? $this->obj->meta[$defaultLang]['title'] : a::get($options, 'alt', $this->obj->name());
+    }
 
     // set the className text
     $this->className = @$options['class'];
