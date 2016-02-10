@@ -13,6 +13,7 @@ function highlight($code, $lang) {
   $geshi->enable_classes();
   $geshi->enable_keyword_links(false);
   $code  = $geshi->parse_code();
+  $code = str_replace('<br />', '', $code);
   return '<span class="' . $lang . '">' . $code . '</span>';
 
 }
