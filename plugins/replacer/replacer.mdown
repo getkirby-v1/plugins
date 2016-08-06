@@ -1,0 +1,183 @@
+# Universal string replacing plugin
+
+This is a plugin for [Kirby](http://getkirby.com/) that can very powerfully replace content placeholders (for example %myAge or THISISAPLACEHOLDER) with dynamic content, for example your current age or anything else you can generate dynamically and echo with PHP. Of course static text is possible too.
+
+These placeholders can be defined in a single place, the replacer.php file or just given to kirbytext() from the template/snippet.
+
+## Installation
+
+1. Please first update your Kirby installation to 1.1.1 (or higher), since Replacer is deeply integrated into the system and needs this version.
+2. Put the whole `replacer` folder (the one with this file in it) into your `site/plugins` folder.
+3. Create a `site/replacer` folder with a `replacer.php` in it to use the "more powerful" placeholders (it will be auto created if possible).
+4. In the `config.php` file inside this folder you can find options for this plugin, please have a look and change them however you like.
+
+## How to use it
+
+There are a lot of different ways to use this plugin. Here are the two main methods:
+
+- Give placeholders and values directly to a `kirbytext()` call, or apply them to the whole output
+- Save your placeholders into `site/replacer/replacer.php` marked with the usage of the placeholder. This is the more flexible way to use this plugin and is very powerful as well.
+
+Now I will show you how you can use them in detail:
+
+### Apply placeholders directly from templates
+
+This is the easiest way to use placeholders without even having to create a `site/replacer` folder and is useful, if you just want to use a few placeholders without a need to collect them in a single file.
+
+#### In `kirbytext()`
+
+##### Example
+
+```php
+kirbytext($page->text, array(
+  'myplaceholder' => 'my replacement'
+));
+```
+
+With this call, every occurrence of `myplaceholder` will be replaced with `my replacement`.
+
+##### RegEx replacement
+
+By default, you can use RegExes for this, so
+
+```php
+kirbytext($page->text, array(
+  '{my( )?placeholder}' => 'my replacement'
+));
+```
+
+would work as well. If you want to deactivate this auto detecting behavior and only use string replacement/regex replacement, you can modify this in the plugin specific config file you put into the config folder.
+
+##### use with `$markdown`
+
+If you want to use the "markdown" param, you can use it like this:
+
+```php
+kirbytext($page->text, $markdown, array(
+  'my placeholder' => 'my replacement'
+));
+```
+
+This will be auto detected, so there is no need to change anything in existing templates using $markdown.
+
+#### Global replacement
+
+If you want to replace things in the whole source code produced by your template (for example whole tags) and you can't get them via `kirbytext()`, there is a way to do this:
+
+```php
+replacer::on();
+?>
+Anything that's echoed here or written statically will be the subject to replace in!
+<?php
+echo "This too!";
+replacer::off(array( // now, all given replacement params will be used to replace in all echoed stuff between on() and off()
+  'my placeholder' => 'my replacement'
+);
+```
+
+**Notice**: Be careful here, since tag names or attributes will be in the subject too, so for example don't replace 'style' with 'anything else', because it will change &lt;style&gt; to &lt;anything else&gt;!
+
+### Apply placeholders from a global replacer.php file
+
+This is the more powerful way to use this plugin, as you can define sets of placeholders and apply them only on a specific part of the output/template.
+
+For using that, the `site/replacer/replacer.php` is required, please create it if you didn't do it yet.
+
+If you want to have site-specific placeholders (one for dev and one for production for example, good for global placeholders), you can also create a site-specific file with the same naming syntax as in `site/config`, for example `site/replacer/replacer.example.com.php`.
+You don't have to add all placeholders from the normal `replacer.php` file, they will work too, but you can *overwrite* them in the site specific file.
+
+These files are actually YAML files collecting all placeholders (They have the file extension `.php`, because you can add PHP code as well, semantics, you know? ;)).
+
+#### Options
+
+There are a lot of different possible options, here are they in detail:
+
+##### Basic usage
+
+	my placeholder:
+	  with: my replacement
+	  usage: kirbytext
+
+All occurrences of "my placeholder" in every `kirbytext()` processed text will be replaced with "my replacement".
+
+##### Dynamic replacements
+
+	%year:
+	  with: <?php date('Y'); ?>
+	  usage: kirbytext
+
+PHP code will be evaluated before replacing it.
+
+##### "On-Demand"-placeholders
+
+	another one:
+	  with: something
+	  usage: demand
+	this is a quite long text hard to remember, but is frequently used in a text you have:
+	  with: make this sentence a bit shorter...
+	  usage: demand
+	  alias: thisone
+
+Placeholders defined with `usage: demand` are only used for `kirbytext()` processed text, but have to be specified manually:
+
+```php
+kirbytext($page->text(), array(
+  'another one',
+  'thisone'
+));
+```
+
+As you can see, you can also define "aliases" for these placeholders. If you specify "thisone" as an replacement, all occurrences of "this is a quite long…" will be replaced.
+
+##### Global placeholders
+
+	<style type="text/css">:
+	  with: <style>
+	  usage: global
+
+Global placeholders will be used for the whole output that gets to the browser. Please read "Global replacements" above to understand this feature.
+
+###### Global placeholders: Sets
+
+	<script type="text/javascript">:
+	  with: <script>
+	  usage: global
+	  set: html5tags, html5
+	<script type="text/javascript">:
+	  with: <script>
+	  usage: global
+	  set:
+	    html5tags
+	    html5
+
+With "Sets", you can limit replacement of specific placeholders in specific parts of the output.
+For using that, you have to turn "replacer.autouse" off to use the `replacer::on()` and `replacer::off()` functions (see "Global replacements" above).
+Then, just add the set you want to use as an argument of either `replacer::on()` or `replacer::off()`, for example
+
+```php
+replacer::on('html5');
+```
+
+#### Template restriction
+  
+	anything:
+	  with: anything else
+	  usage: (does not matter)
+	  templates: default, about-us, blog
+	another anything:
+	  with: anything else
+	  usage: (does not matter)
+	  templates:
+	    default
+	    about-us
+	    blog
+
+With the "templates" argument, you can restrict *every* placeholder to work in specific templates only. If not defined, the placeholder will work in all templates.
+
+## Questions?
+
+Don't hesitate to contact me: <lukas@lu-x.me>
+
+## Author
+
+Author: Lukas Bestle <http://lu-x.me>

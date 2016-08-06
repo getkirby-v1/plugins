@@ -1,0 +1,96 @@
+# Automatic asset management plugin
+
+This is a plugin for [Kirby](http://getkirby.com/) optimizing assets (JS, CSS, LESS) as well as HTML for production.
+
+It automatically converts LESS code to CSS, minifies CSS- and JS files and also the source code (HTML) and can combine all CSS and JS files into one without modifying any source files, just doing the compression and saving the files to the cache folder.
+
+With this plugin you can save a lot traffic and page loading time and don't have to do this optimizations before uploading the assets to your web server.
+
+Of course this can be deactivated for testing and debugging via the config.php.
+
+## Installation
+
+1. Please first update your Kirby installation to 1.1.1 (or higher), since Assety is deeply integrated into the system and needs this version.
+2. Put the whole `assets` folder (the one with this file in it) into your `site/plugins`.
+3. Make your `site/cache` folder writable to store compressed assets!
+4. Check the `config.php` file inside of this folder to enable/disable caching of specific types of files
+
+## How to use it (in a nutshell)
+
+If you just want to have all compressed and combined, you actually don't have to do anything :).
+All your css() and js() calls will now echo nothing and the new tags for the combined and compressed files (only one per type) will be echoed right before `</head>` automatically.
+
+**Important**: If you change assets, please delete all files in your `site/cache` directory to reload them.
+
+## Docs
+
+If you want to change this automatic behavior, you can (of course) do that.
+
+### Change the position of the output
+
+If you want to have the `<script>` and `<link>` tags outputted at a specific point of the output, simply call
+
+	echo assety::get($indent, $media);
+
+where you actually want them. Once you call this (or any other function described below, Assety won't echo the tags again at the end of )
+
+If you want to have the calls indented beautifully, simply call the function with a string containing the characters (tabs…) you want to prepend each line as an `$indent` argument.
+Of course, this does not make any sense when compressing HTML ;).
+
+`$media` is an array containing all media you want to get the CSS of.
+So, for example:
+
+	echo assety::get("	", array("all", "screen"));
+
+will get all CSS added with `css($url, "all")` and `css($url, "screen")`. Files added without a `$media` information given to `css()` have `$media = -1`, so you can access them with `-1` in `assety::get()`.
+If not given to `assety::get()`, all CSS will be outputted.
+
+There is also a way to output CSS/JS only if you want to echo CSS and JS tags at different points of the source.
+
+	echo assety::css($indent, $media);
+	echo assety::js($indent);
+
+### Exclude specific files from caching
+
+If you want to exclude a specific file from caching and just want to use the css() and js() functions as you used them before (to return the tag), there is a `$queue` param. When set to false, it will return a tag and will not add it to the queue:
+
+	css($url, $media, false) // <link rel="stylesheet" media="$media" src="$url" />
+	less($url, $media, false) // <link rel="stylesheet" media="$media" src="$url" />
+	js($url, false) // <script src="$url"></script>
+
+If you don't want to give a media to css() or less(), simply insert `false` in this argument.
+
+### LESS parser
+
+Assety brings a new function called `less()` to process LESS files and compile them on the server itself, caching it and adding them to the combine-queue.
+It works the same way as `css()` does but takes LESS files.
+
+**Important**: Works with enabled cache only!
+
+	less($url, $media);
+
+### SASS/SCSS parser
+
+I also want to offer a function doing the same for SASS and SCSS, but I haven't found any *working* SASS/SCSS class for PHP that offer an API like this:
+
+	$parsedContent = $sassc->parse($content);
+
+If you know one, please write me a mail (<lukas@lu-x.me>) or a tweet (@vis7mac)!
+
+It's all prepared, so I just need the parser class.
+
+### Minifier functions
+
+These are helpful when you want to compress an asset on the fly without having to add it to the queue (whyever):
+
+	$minifiedcontent = assety::htmlminify($content);
+	$minifiedcontent = assety::cssminify($content);
+	$minifiedcontent = assety::jsminify($content);
+
+## Questions, bugs or feature requests?
+
+Don't hesitate to contact me: <lukas@lu-x.me>
+
+## Author
+
+Author: Lukas Bestle <http://lu-x.me>
