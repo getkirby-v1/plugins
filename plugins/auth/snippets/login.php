@@ -1,6 +1,6 @@
 <?php $login = Auth::login() ?>
 
-<form action="<?php $page->url() ?>" method="post">
+<form action="<?php echo $page->url() ?>" method="post">
 
   <?php if($login): ?>
   <div class="alert">
